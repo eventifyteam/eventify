@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(ServerApplication.class);
+		return application.sources(ServerApplication.class).properties("spring.config.name: eventify");
 	}
 
 }

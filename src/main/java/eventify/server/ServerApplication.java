@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ServerApplication {
 
 	public static void main(String[] args) {
+		System.setProperty("spring.config.name", "eventify");
 		SpringApplication.run(ServerApplication.class, args);
 	}
 
