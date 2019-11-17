@@ -1,6 +1,8 @@
 # eventify
 Project Website
-[eventifyteam.github.io](eventifyteam.github.io)
+
+[eventifyteam.github.io](http://eventifyteam.github.io)
 
 Product Website
-[eventif.ddns.net](eventif.ddns.net)
+
+[eventif.ddns.net](http://eventify.ddns.net)
