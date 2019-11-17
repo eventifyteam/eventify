@@ -1,4 +1,5 @@
 package eventify.server.jpa.model;
+
 import javax.persistence.*;
 
 @Entity

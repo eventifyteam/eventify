@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) {
@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     }
 
     @Autowired
-    public void configAuthentication(final AuthenticationManagerBuilder auth, final DataSource dataSource) throws Exception{
+    public void configAuthentication(final AuthenticationManagerBuilder auth, final DataSource dataSource) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .usersByUsernameQuery("select username, password, enabled from logins where username=?")
