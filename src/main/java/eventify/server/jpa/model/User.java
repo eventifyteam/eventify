@@ -3,8 +3,8 @@ package eventify.server.jpa.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "logins")
-public class Logins {
+@Table(name = "users")
+public class User {
 
     @Id
     @Column(name = "username", nullable = false, unique = true)
