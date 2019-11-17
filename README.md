@@ -1,4 +1,6 @@
 # eventify
-Eventify Website
+Project Website
+[eventifyteam.github.io](eventifyteam.github.io)
 
-test 14
+Product Website
+[eventif.ddns.net](eventif.ddns.net)
