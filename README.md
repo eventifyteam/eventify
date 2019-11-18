@@ -1,15 +1,15 @@
 # eventify
-##Project Website
+## Project Website
 
 [eventifyteam.github.io](http://eventifyteam.github.io)
 
-##Product Website
+## Product Website
 
 [eventify.ddns.net](http://eventify.ddns.net)
 
-#EVENTIFY REQUIREMENTS
+# EVENTIFY REQUIREMENTS
  
-##Sign Up and Login Operations
+## Sign Up and Login Operations
 
 Users will sign up on the website by providing his name, date of birth, location(city), email and password.
 
@@ -21,7 +21,7 @@ If users forget his/her password, users will be able to change his/her password.
 
 If user provide and confirm his/her phone number, he/she will be able to have verified member badge near his/her name on website and profile page.
 
-##Event Operations
+## Event Operations
 
 Signed up users will be able to create, delete or customize post for their event on main page of website.
 
@@ -45,7 +45,7 @@ Users will be able to filter through events for their interest, location, event 
 
 Main page of website should refresh itself every 60 seconds.
 
-##Profile Operations
+## Profile Operations
 
 Users will be able to see their information on the profile page. 
 
@@ -55,7 +55,7 @@ If user change his/her email he/she must confirm their new email.
 
 Users will be able to set a profile picture.
 
-#NF requirements
+# NF requirements
 
 Because of low budget server performance and storage is limited. The server should not use too much resource.
 
