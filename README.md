@@ -1,4 +1,4 @@
-# eventify
+# Eventify
 ## Project Website
 
 [eventifyteam.github.io](http://eventifyteam.github.io)
