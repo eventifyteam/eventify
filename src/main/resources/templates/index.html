@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Eventify</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Eventify">
+    <meta name="keywords" content="html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="../static/images/favicon.ico" rel="shortcut icon" th:src="@{/images/favicon.ico}"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="../static/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}"/>
+    <link rel="stylesheet" href="../static/css/owl.carousel.min.css" th:href="@{/css/owl.carousel.min.css}"/>
+    <link rel="stylesheet" href="../static/css/slicknav.min.css" th:href="@{/css/slicknav.min.css}"/>
+
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
+
+</head>
+<body>
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<header class="header-section clearfix">
+    <a href="index" class="site-logo" style="padding-bottom: 2em">
+        <img src="../static/images/logo.png" style="width:10em;" alt="" th:src="@{images/logo.png}">
+    </a>
+    <div class="header-right">
+        <a href="contact" class="hr-btn">Contact Us</a>
+        <span>|</span>
+        <div class="user-panel">
+            <a href="/home" class="login">Login</a>
+            <a href="" class="register">Sign up</a>
+        </div>
+    </div>
+</header>
+<!-- Header section end -->
+
+<!-- Hero section -->
+<section class="hero-section">
+    <div class="hero-slider owl-carousel">
+        <div class="hs-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="hs-text">
+                            <h2><span>Events</span> for everyone.</h2>
+                            <p>There may be some times when you want to attend a certain event, but you have no one to attend with!
+                                You may want to study something, adopt a pet, grab a coffee, anything! </p>
+                            <a href="#" class="site-btn">Login</a>
+                            <a href="#" class="site-btn sb-c2">Sign up</a>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="hr-img">
+                            <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="450" id="gmap_canvas" src="https://maps.google.com/maps?q=eski%C5%9Feh&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:450px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:450px;width:600px;}</style></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hs-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="hs-text">
+                            <h2><span>Socialize</span> with people.</h2>
+                            <p>Eventify is here for you to end all your troubles!<br>Create an event or join an existing one! Join us!</p>
+                            <a href="#" class="site-btn">Login</a>
+                            <a href="#" class="site-btn sb-c2">Sign up</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="450" id="gmap_canvas" src="https://maps.google.com/maps?q=eski%C5%9Feh&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:450px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:450px;width:600px;}</style></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero section end -->
+
+<!-- Intro section -->
+<section class="intro-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-title">
+                    <h2>Join events as much as you want!</h2>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <p>Test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test.</p>
+                <a href="#" class="site-btn">Try it now</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Intro section end -->
+
+<!-- How section -->
+<section class="how-section spad set-bg" data-setbg="img/how-to-bg.jpg">
+    <div class="container text-white">
+        <div class="section-title">
+            <h2>How it works</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="how-item">
+                    <div class="hi-icon">
+                        <img src="../static/images/brain.png" alt="" th:src="@{/images/brain.png}">
+                    </div>
+                    <h4>Sign up</h4>
+                    <p>Test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test. </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="how-item">
+                    <div class="hi-icon">
+                        <img src="../static/images/pointer.png" alt="" th:src="@{/images/pointer.png}">
+                    </div>
+                    <h4>Choose an Event</h4>
+                    <p>Test test test test test test test test test test test test test test test test test test test test test test test test test test test. </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="how-item">
+                    <div class="hi-icon">
+                        <img src="../static/images/smartphone.png" alt="" th:src="@{/images/smartphone.png}">
+                    </div>
+                    <h4>Attend and Socialize</h4>
+                    <p>Test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- How section end -->
+<section class="premium-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-title">
+                    <h2>Why join Eventify© </h2>
+                    <h2>Community</h2>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <p>Test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="premium-item">
+                    <img src="../static/images/1.jpg" alt="" th:src="@{/images/1.jpg}">
+                    <h4>Test1</h4>
+                    <p>Test text1</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="premium-item">
+                    <img src="../static/images/2.jpg" alt="" th:src="@{/images/2.jpg}">
+                    <h4>Test2</h4>
+                    <p>Test text2</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="premium-item">
+                    <img src="../static/images/3.jpg" alt="" th:src="@{/images/3.jpg}">
+                    <h4>Test3</h4>
+                    <p>Test text3</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="premium-item">
+                    <img src="../static/images/4.jpg" alt="" th:src="@{/images/4.jpg}">
+                    <h4>Test4</h4>
+                    <p>Test text4</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<<!-- Footer section -->
+<link href="../static/css/eventify.css" rel="stylesheet" th:href="@{/css/eventify.css}">
+<footer class="footer text-center">
+    <div class="container">
+        <div class="row">
+
+            <!-- Footer Location -->
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4" style="color: white">Location</h4>
+                <p class="lead mb-0" style="color: white">No: 47/16, 26170, Eskisehir</p>
+            </div>
+
+            <!-- Footer Social Icons -->
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4" style="color: white">Around the Web</h4>
+                <a class="btn btn-outline-light btn-social mx-1" href="mailto: eventifyt@gmail.com">
+                    <i class="fa fa-envelope"></i>
+                </a>
+                <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/eventifyteam">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+
+            <!-- Footer About Text -->
+            <div class="col-lg-4">
+                <h4 class="text-uppercase mb-4" style="color: white">About Us</h4>
+                <p class="lead mb-0" style="color: white">Made with ❤ by
+                    <a href="http://github.com/eventifyteam" style="color: white">Eventify</a>.</p>
+            </div>
+
+        </div>
+    </div>
+</footer>
+<!-- Footer section end -->
+
+<!--====== Javascripts & Jquery ======-->
+<script src="../static/js/jquery-3.2.1.min.js" th:src="@{/js/jquery-3.2.1.min.js}"></script>
+<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script src="../static/js/jquery.slicknav.min.js" th:src="@{/js/jquery.slicknav.min.js}"></script>
+<script src="../static/js/owl.carousel.min.js" th:src="@{/js/owl.carousel.min.js}"></script>
+<script src="../static/js/mixitup.min.js" th:src="@{/js/mixitup.min.js}"></script>
+<script src="../static/js/main.js" th:src="@{/js/main.js}"></script>
+
+</body>
+</html>
