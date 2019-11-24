@@ -1,20 +1,17 @@
 package eventify.server.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class ViewController {
+@PreAuthorize("isAnonymous()")
+public class IntroController {
 
     @RequestMapping("/index")
     public String index() {
 
         return "index";
-    }
-
-    @RequestMapping("/home")
-    public String login() {
-        return "home";
     }
 
     @RequestMapping("/contact")

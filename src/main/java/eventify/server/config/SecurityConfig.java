@@ -5,8 +5,8 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -16,19 +16,24 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {  // Spring Security Configuration
         http
-                .authorizeRequests()
-              .antMatchers("/home").authenticated()
-                .anyRequest().permitAll()
+				.formLogin().defaultSuccessUrl("/home")
                 .and()
-                .formLogin().defaultSuccessUrl("/home", true);
-        http
-                .csrf().disable();
+				.csrf();
     }
+
+	@Override
+	public void configure(WebSecurity web) {
+		web.ignoring().antMatchers("/css/**")
+				.antMatchers("/icon-fonts/**")
+				.antMatchers("/images/**")
+				.antMatchers("/js/**");
+	}
 
     @Autowired
     public void configAuthentication(final AuthenticationManagerBuilder auth, final DataSource dataSource) throws Exception {
