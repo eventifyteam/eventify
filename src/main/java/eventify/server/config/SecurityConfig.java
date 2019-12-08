@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,21 +20,29 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    // antMatchers methods prohibits the PUT, POST, DELETE and PATCH methods (unsafe methods) from Database.
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {  // Spring Security Configuration
         http
-				.formLogin().defaultSuccessUrl("/home")
-                .and()
-				.csrf();
+                .authorizeRequests()
+                .antMatchers(HttpMethod.PUT).authenticated()
+                .antMatchers(HttpMethod.POST).authenticated()
+                .antMatchers(HttpMethod.DELETE).authenticated()
+                .antMatchers(HttpMethod.PATCH).authenticated()
+                .anyRequest().permitAll().and()
+                .formLogin().defaultSuccessUrl("/home");
+
+        http.csrf().disable();
     }
 
-	@Override
-	public void configure(WebSecurity web) {
-		web.ignoring().antMatchers("/css/**")
-				.antMatchers("/icon-fonts/**")
-				.antMatchers("/images/**")
-				.antMatchers("/js/**");
-	}
+    @Override
+    public void configure(WebSecurity web) {
+        web.ignoring().antMatchers("/css/**")
+                .antMatchers("/icon-fonts/**")
+                .antMatchers("/images/**")
+                .antMatchers("/js/**");
+    }
 
     @Autowired
     public void configAuthentication(final AuthenticationManagerBuilder auth, final DataSource dataSource) throws Exception {
