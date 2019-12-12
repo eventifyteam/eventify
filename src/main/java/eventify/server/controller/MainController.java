@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @PreAuthorize("isAuthenticated()")
 public class MainController {
 
-	@RequestMapping("/home")
-	public String login() {
-		return "home";
-	}
+    @RequestMapping("/home")
+    public String login() {
+        return "home";
+    }
 }

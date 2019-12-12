@@ -10,12 +10,16 @@ public class IntroController {
 
     @RequestMapping("/index")
     public String index() {
-
         return "index";
     }
 
     @RequestMapping("/contact")
     public String contact() {
         return "contact";
+    }
+
+    @RequestMapping("/signup")
+    public String signup() {
+        return "signup";
     }
 }

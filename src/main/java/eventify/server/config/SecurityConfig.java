@@ -5,7 +5,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,20 +19,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    // antMatchers methods prohibits the PUT, POST, DELETE and PATCH methods (unsafe methods) from Database.
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {  // Spring Security Configuration
         http
-                .authorizeRequests()
-                .antMatchers(HttpMethod.PUT).authenticated()
-                .antMatchers(HttpMethod.POST).authenticated()
-                .antMatchers(HttpMethod.DELETE).authenticated()
-                .antMatchers(HttpMethod.PATCH).authenticated()
-                .anyRequest().permitAll().and()
                 .formLogin().defaultSuccessUrl("/home");
-
-        http.csrf().disable();
+        http
+                .csrf().disable();
     }
 
     @Override
