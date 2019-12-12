@@ -22,7 +22,6 @@ public class User {
     private List<Event> createdEvents;
 
     public User() {  // Default constructor needed for model initialization.
-        authority.add("ROLE_USER");
     }
 
     @Id
