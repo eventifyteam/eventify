@@ -1,13 +1,12 @@
 package eventify.server.jpa.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -22,7 +21,7 @@ public class User {
     private List<Event> attendedEvents;
     private List<Event> createdEvents;
 
-    public User() {  // Default constructor needed for model initialization.
+    private User() {  // Default constructor needed for model initialization.
         authority.add("ROLE_USER");
     }
 

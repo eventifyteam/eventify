@@ -5,8 +5,6 @@ import eventify.server.jpa.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
-
 @Service
 public class UserService {
 
@@ -17,7 +15,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public Iterable<User> getUsers() throws ParseException {
+    public Iterable<User> getUsers() {
         return userRepository.findAll();
     }
 
