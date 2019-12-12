@@ -79,6 +79,6 @@ public class Event {
         this.attendees = attendees;
     }
 
-    private Event() { // Default constructor needed for model initialization.
+    public Event() { // Default constructor needed for model initialization.
     }
 }

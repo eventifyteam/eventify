@@ -21,7 +21,7 @@ public class User {
     private List<Event> attendedEvents;
     private List<Event> createdEvents;
 
-    private User() {  // Default constructor needed for model initialization.
+    public User() {  // Default constructor needed for model initialization.
         authority.add("ROLE_USER");
     }
 
