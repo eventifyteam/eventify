@@ -1,17 +1,9 @@
 package eventify.server.jpa.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,11 +16,13 @@ public class User {
 
     private String username;
     private String password;
-    private int enabled = 1;
+    private int enabled=1;
+    private List<String> authority=new ArrayList<>();
     private List<Event> attendedEvents;
     private List<Event> createdEvents;
 
     public User() {  // Default constructor needed for model initialization.
+        authority.add("ROLE_USER");
     }
 
     @Id
@@ -38,7 +32,8 @@ public class User {
     }
 
     public User(String username, String password, int enabled) {
-        this.username = username;
+        this();
+        this.username=username;
         this.password = password;
         this.enabled = enabled;
     }
@@ -57,24 +52,35 @@ public class User {
         this.password = password;
     }
 
-    @Column(name = "enabled", nullable = false)
+    @Column(name="enabled", nullable=false)
     @JsonIgnore
-    public int getEnabled() {
+    public int getEnabled(){
         return enabled;
     }
 
-    public void setEnabled(int enabled) {
-        this.enabled = enabled;
+    public void setEnabled(int enabled){
+        this.enabled=enabled;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "AttendMap", joinColumns = @JoinColumn(name = "user_username"), inverseJoinColumns = @JoinColumn(name = "event_id"))
-    public List<Event> getAttendedEvents() {
+    @ElementCollection
+    @CollectionTable(name="authorities", joinColumns=@JoinColumn(name="username"))
+    @JsonIgnore
+    public List<String> getAuthority(){
+        return authority;
+    }
+
+    public void setAuthority(List<String> authorities){
+        this.authority=authorities;
+    }
+
+    @ManyToMany(fetch=FetchType.EAGER)
+    @JoinTable(name="AttendMap", joinColumns=@JoinColumn(name="user_username"), inverseJoinColumns=@JoinColumn(name="event_id"))
+    public List<Event> getAttendedEvents(){
         return attendedEvents;
     }
 
-    public void setAttendedEvents(List<Event> attendedEvents) {
-        this.attendedEvents = attendedEvents;
+    public void setAttendedEvents(List<Event> attendedEvents){
+        this.attendedEvents=attendedEvents;
     }
 
     @OneToMany(mappedBy = "creator", fetch = FetchType.EAGER)
