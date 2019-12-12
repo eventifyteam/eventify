@@ -20,6 +20,7 @@ public class UserService {
     }
 
     public void createUser(User user) {
+        //  TODO: Check if that user already exists.
         userRepository.save(user);
     }
 }
