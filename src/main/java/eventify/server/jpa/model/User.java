@@ -30,14 +30,6 @@ public class User {
         return username;
     }
 
-    public User(String name, String username, String password, int enabled) {
-        this();
-        this.name = name;
-        this.username = username;
-        this.password = password;
-        this.enabled = enabled;
-    }
-
     public String getName() {
         return name;
     }
