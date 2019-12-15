@@ -83,7 +83,7 @@ public class User implements Serializable{
     }
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "AttendMap", joinColumns = @JoinColumn(name = "user_username"), inverseJoinColumns = @JoinColumn(name = "event_id"))
+    @JoinTable(name = "AttendMap", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
     public List<Event> getAttendedEvents() {
         return attendedEvents;
     }

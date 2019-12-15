@@ -24,7 +24,7 @@ public class TestController {
         return eventRepository.findAll();
     }
 
-    @GetMapping("picutures")
+    @GetMapping("pictures")
     public String picturePath() {
         return fileSystemPictureStorage.getRootLocation().toAbsolutePath().toString();
     }

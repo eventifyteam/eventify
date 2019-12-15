@@ -34,7 +34,7 @@ public class FileSystemPictureStorage implements PictureStorage {
 
     @Override
     public Resource getUserPicture(int userId) {
-        Path picturePath = rootLocation.resolve(String.valueOf(userId));
+        Path picturePath = rootLocation.resolve(userId + ".pic");
         if (Files.exists(picturePath)) {
             try {
                 return new UrlResource(picturePath.toUri());
@@ -47,7 +47,7 @@ public class FileSystemPictureStorage implements PictureStorage {
 
     public Resource defaultPicture() {
         try {
-            return new UrlResource(rootLocation.resolve("default").toUri());
+            return new UrlResource(rootLocation.resolve("default.pic").toUri());
         } catch (MalformedURLException e) {
             e.printStackTrace();
             return null;

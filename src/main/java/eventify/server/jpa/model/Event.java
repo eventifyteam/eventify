@@ -70,7 +70,7 @@ public class Event {
     }
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "AttendMap", joinColumns = @JoinColumn(name = "event_id"), inverseJoinColumns = @JoinColumn(name = "user_username"))
+    @JoinTable(name = "AttendMap", joinColumns = @JoinColumn(name = "event_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     public List<User> getAttendees() {
         return attendees;
     }
