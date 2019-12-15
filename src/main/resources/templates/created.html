@@ -2,74 +2,78 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 
-	<title>Created Events</title>
+    <title>Created Events</title>
 
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-	<link rel="stylesheet" type="text/css" href="../static/Bootstrap/dist/css/bootstrap-reboot.css" th:href="@{/Bootstrap/dist/css/bootstrap-reboot.css}">
-	<link rel="stylesheet" type="text/css" href="../static/Bootstrap/dist/css/bootstrap.css" th:href="@{/Bootstrap/dist/css/bootstrap.css}">
-	<link rel="stylesheet" type="text/css" href="../static/Bootstrap/dist/css/bootstrap-grid.css" th:href="@{/Bootstrap/dist/css/bootstrap-grid.css}">
+    <link rel="stylesheet" type="text/css" href="../static/Bootstrap/dist/css/bootstrap-reboot.css"
+          th:href="@{/Bootstrap/dist/css/bootstrap-reboot.css}">
+    <link rel="stylesheet" type="text/css" href="../static/Bootstrap/dist/css/bootstrap.css"
+          th:href="@{/Bootstrap/dist/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" href="../static/Bootstrap/dist/css/bootstrap-grid.css"
+          th:href="@{/Bootstrap/dist/css/bootstrap-grid.css}">
 
-	<link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
-	<link rel="stylesheet" type="text/css" href="../static/css/fonts.min.css" th:href="@{/css/fonts.min.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/fonts.min.css" th:href="@{/css/fonts.min.css}">
 
-	<script src="../static/js/webfontloader.min.js" th:href="@{/js/webfontloader.min.js}"></script>
-	<script>
-		WebFont.load({
-			google: {
-				families: ['Roboto:300,400,500,700:latin']
-			}
-		});
-	</script>
+    <script src="../static/js/webfontloader.min.js" th:href="@{/js/webfontloader.min.js}"></script>
+    <script>
+        WebFont.load({
+            google: {
+                families: ['Roboto:300,400,500,700:latin']
+            }
+        });
+    </script>
 </head>
 <body class="page-has-left-panels page-has-right-panels">
 
 <header class="header" id="site-header" style="background-color: #08192d">
 
-	<div class="page-title">
-		<h6>Eventify</h6>
-	</div>
+    <div class="page-title">
+        <h6>Eventify</h6>
+    </div>
 
-	<div class="header-content-wrapper">
-		
-		<div class="control-block">
-			<div class="author-page author vcard inline-items more">
-				<div class="author-thumb">
-					<img alt="author" src="../static/img/author-page.jpeg" class="profile-image" th:src="@{/img/author-page.jpeg}">
-					<div class="more-dropdown more-with-triangle">
-						<div class="mCustomScrollbar" data-mcs-theme="dark">
-							<div class="ui-block-title ui-block-title-small">
-								<h6 class="title">Your Account</h6>
-							</div>
-							<ul class="chat-settings">
-								<li>
-									<a href="settings.html">
-										<span class="icon-status online"></span>
-										<span>Profile Settings</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<span class="icon-status disconected"></span>
-										<span>Log Out</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<a href="settings.html" class="author-name fn">
-					<div class="author-title">
-						Sercan Akdeniz
-					</div>
-					<span class="author-subtitle"></span> <!-- SAMPLE TEXT -->
-				</a>
-			</div>
+    <div class="header-content-wrapper">
 
-		</div>
-	</div>
+        <div class="control-block">
+            <div class="author-page author vcard inline-items more">
+                <div class="author-thumb">
+                    <img alt="author" src="../static/img/author-page.jpeg" class="profile-image"
+                         th:src="@{/img/author-page.jpeg}">
+                    <div class="more-dropdown more-with-triangle">
+                        <div class="mCustomScrollbar" data-mcs-theme="dark">
+                            <div class="ui-block-title ui-block-title-small">
+                                <h6 class="title">Your Account</h6>
+                            </div>
+                            <ul class="chat-settings">
+                                <li>
+                                    <a href="settings.html">
+                                        <span class="icon-status online"></span>
+                                        <span>Profile Settings</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon-status disconected"></span>
+                                        <span>Log Out</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <a href="settings.html" class="author-name fn">
+                    <div class="author-title">
+                        Sercan Akdeniz
+                    </div>
+                    <span class="author-subtitle"></span> <!-- SAMPLE TEXT -->
+                </a>
+            </div>
+
+        </div>
+    </div>
 
 </header>
 
@@ -79,82 +83,89 @@
 
 
 <div class="container">
-	<div class="row">
-		<div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
-			<div class="ui-block">
-				<div class="ui-block-title">
-					<h6 class="title">Created Events</h6>
-				</div>
+    <div class="row">
+        <div class="col col-xl-9 order-xl-2 col-lg-9 order-lg-2 col-md-12 order-md-1 col-sm-12 col-12">
+            <div class="ui-block">
+                <div class="ui-block-title">
+                    <h6 class="title">Created Events</h6>
+                </div>
 
 
-
-				<!-- Event List (Notification) -->
-				
+                <!-- Event List (Notification) -->
 
 
-				<ul class="notification-list">
-					<li>
-						<div class="author-thumb">
-							<img src="../static/img/author-page.jpeg" alt="author" class="profile-image" th:src="@{/img/author-page.jpeg}">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">You </a> had a coffee event in Kedd Coffee in 15/12/2019.
-							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Yesterday</time></span>
-						</div>
-						<span class="notification-icon">
+                <ul class="notification-list">
+                    <li>
+                        <div class="author-thumb">
+                            <img src="../static/img/author-page.jpeg" alt="author" class="profile-image"
+                                 th:src="@{/img/author-page.jpeg}">
+                        </div>
+                        <div class="notification-event">
+                            <a href="#" class="h6 notification-friend">You </a> had a coffee event in Kedd Coffee in
+                            15/12/2019.
+                            <span class="notification-date"><time class="entry-date updated"
+                                                                  datetime="2004-07-24T18:18">Yesterday</time></span>
+                        </div>
+                        <span class="notification-icon">
 											</span>
-				
-						<div class="more">
-						</div>
-					</li>
-					<li>
-						<div class="author-thumb">
-							<img src="../static/img/author-page.jpeg" alt="author" class="profile-image" th:src="@{/img/author-page.jpeg}">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">You </a> had a concert event in Istanbul in 11/11/2019.
-							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">One month ago</time></span>
-						</div>
-						<span class="notification-icon">
-											</span>
-				
-						<div class="more">
-						</div>
-					</li>
-					<li>
-						<div class="author-thumb">
-							<img src="../static/img/author-page.jpeg" alt="author" class="profile-image" th:src="@{/img/author-page.jpeg}">
-						</div>
-						<div class="notification-event">
-							<a href="#" class="h6 notification-friend">You </a> had a study event in Eskişehir Technical University in 10/12/2019.
-							<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Two months ago</time></span>
-						</div>
-						<span class="notification-icon">
-											</span>
-				
-						<div class="more">
-						</div>
-					</li>
-			</div>
-		</div>
 
-		<div class="col col-xl-3 order-xl-1 col-lg-3 order-lg-1 col-md-12 order-md-2 col-sm-12 col-12 responsive-display-none">
-			<div class="ui-block">
-				<div class="ui-block-title">
-						<a href="settings.html" class="h6 title" th:href="@{/settings}">Profile Settings</a>
-					</div>
-					<div class="ui-block-title">
-						<a href="created.html" class="h6 title" th:href="@{/created}">Created Events</a>
-					</div>
-					<div class="ui-block-title">
-						<a href="attended.html" class="h6 title" th:href="@{/attended}">Attended Events</a>
-					</div>
-			</div>
-		</div>
-	</div>
+                        <div class="more">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="author-thumb">
+                            <img src="../static/img/author-page.jpeg" alt="author" class="profile-image"
+                                 th:src="@{/img/author-page.jpeg}">
+                        </div>
+                        <div class="notification-event">
+                            <a href="#" class="h6 notification-friend">You </a> had a concert event in Istanbul in
+                            11/11/2019.
+                            <span class="notification-date"><time class="entry-date updated"
+                                                                  datetime="2004-07-24T18:18">One month ago</time></span>
+                        </div>
+                        <span class="notification-icon">
+											</span>
+
+                        <div class="more">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="author-thumb">
+                            <img src="../static/img/author-page.jpeg" alt="author" class="profile-image"
+                                 th:src="@{/img/author-page.jpeg}">
+                        </div>
+                        <div class="notification-event">
+                            <a href="#" class="h6 notification-friend">You </a> had a study event in Eskişehir Technical
+                            University in 10/12/2019.
+                            <span class="notification-date"><time class="entry-date updated"
+                                                                  datetime="2004-07-24T18:18">Two months ago</time></span>
+                        </div>
+                        <span class="notification-icon">
+											</span>
+
+                        <div class="more">
+                        </div>
+                    </li>
+            </div>
+        </div>
+
+        <div class="col col-xl-3 order-xl-1 col-lg-3 order-lg-1 col-md-12 order-md-2 col-sm-12 col-12 responsive-display-none">
+            <div class="ui-block">
+                <div class="ui-block-title">
+                    <a href="settings.html" class="h6 title" th:href="@{/settings}">Profile Settings</a>
+                </div>
+                <div class="ui-block-title">
+                    <a href="created.html" class="h6 title" th:href="@{/created}">Created Events</a>
+                </div>
+                <div class="ui-block-title">
+                    <a href="attended.html" class="h6 title" th:href="@{/attended}">Attended Events</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <a class="back-to-top" href="#" style="background-color: #08192d">
-	<img src="../static/svg-icons/back-to-top.svg" th:src="@{/svg-icons/back-to-top.svg}" alt="arrow" class="back-icon">
+    <img src="../static/svg-icons/back-to-top.svg" th:src="@{/svg-icons/back-to-top.svg}" alt="arrow" class="back-icon">
 </a>
 </body>
 </html>
