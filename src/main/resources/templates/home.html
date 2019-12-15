@@ -1,10 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+	<title>Profile Settings</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<link rel="stylesheet" type="text/css" href="../static/Bootstrap/dist/css/bootstrap-reboot.css" th:href="@{/Bootstrap/dist/css/bootstrap-reboot.css}">
+	<link rel="stylesheet" type="text/css" href="../static/Bootstrap/dist/css/bootstrap.css" th:href="@{/Bootstrap/dist/css/bootstrap.css}">
+	<link rel="stylesheet" type="text/css" href="../static/Bootstrap/dist/css/bootstrap-grid.css" th:href="@{/Bootstrap/dist/css/bootstrap-grid.css}">
+
+	<link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
+	<link rel="stylesheet" type="text/css" href="../static/css/fonts.min.css" th:href="@{/css/fonts.min.css}">
+
+	<script src="../static/js/webfontloader.min.js" th:href="@{/js/webfontloader.min.js}"></script>
+	<script>
+		WebFont.load({
+			google: {
+				families: ['Roboto:300,400,500,700:latin']
+			}
+		});
+	</script>
 </head>
-<body>
-Hello World
+<body class="page-has-left-panels page-has-right-panels">
+
+<header class="header" id="site-header" style="background-color: #08192d">
+
+	<div class="page-title">
+		<h6>Eventify</h6>
+	</div>
+
+	<div class="header-content-wrapper">
+		
+		<div class="control-block">
+			<div class="author-page author vcard inline-items more">
+				<div class="author-thumb">
+					<img alt="author" src="../static/img/author-page.jpeg" th:src="@{/img/author-page.jpeg}" class="profile-image">
+					<div class="more-dropdown more-with-triangle">
+						<div class="mCustomScrollbar" data-mcs-theme="dark">
+							<div class="ui-block-title ui-block-title-small">
+								<h6 class="title">Your Account</h6>
+							</div>
+							<ul class="chat-settings">
+								<li>
+									<a href="settings.html" th:href="@{/settings}">
+										<span class="icon-status online"></span>
+										<span>Profile Settings</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="icon-status disconected"></span>
+										<span>Log Out</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<a href="#" class="author-name fn">
+					<div class="author-title">
+						Sercan Akdeniz
+					</div>
+					<span class="author-subtitle"></span> <!-- SAMPLE TEXT -->
+				</a>
+			</div>
+
+		</div>
+	</div>
+
+</header>
+
+<div class="header-spacer header-spacer-small"></div>
+<div style="margin-bottom: 3%"></div>
+
+
+
+<!-- Home Code Here -->
+
+
+
+<a class="back-to-top" href="#" style="background-color: #08192d">
+	<img src="../static/svg-icons/back-to-top.svg" th:src="@{/svg-icons/back-to-top.svg}" alt="arrow" class="back-icon">
+</a>
 </body>
 </html>
