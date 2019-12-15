@@ -12,4 +12,19 @@ public class MainController {
     public String login() {
         return "home";
     }
+
+    @RequestMapping("/settings")
+    public String settings() {
+        return "settings";
+    }
+
+    @RequestMapping("/created")
+    public String created() {
+        return "created";
+    }
+
+    @RequestMapping("/attended")
+    public String attended() {
+        return "attended";
+    }
 }
