@@ -17,9 +17,4 @@ public class IntroController {
     public String contact() {
         return "contact";
     }
-
-    @RequestMapping("/signup")
-    public String signup() {
-        return "signup";
-    }
 }

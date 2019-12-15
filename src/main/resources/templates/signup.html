@@ -18,6 +18,10 @@
         <div class="container">
             <div class="signup-content">
                 <div class="signup-form">
+                    <!--/*@thymesVar id="errorMessage" type="java.lang.Iterable<String>"*/-->
+                    <th:block th:if="${errorMessage!=null}" th:each="message : ${errorMessage}">
+                        <span class="text-danger" th:text="${message}">Error message here</span>
+                    </th:block>
                     <h2 class="form-title">Sign Up</h2>
                     <form method="POST" name="register-form" class="register-form" id="register-form">
                         <div class="form-group">
