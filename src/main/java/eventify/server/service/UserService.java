@@ -21,7 +21,7 @@ public class UserService {
     }
 
     public boolean userExists(String username){
-        return userRepository.existsById(username);
+        return userRepository.existsByUsername(username);
     }
 
     public void createUser(User user){

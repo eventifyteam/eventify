@@ -6,5 +6,6 @@ import eventify.server.jpa.model.User;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, String> {
+public interface UserRepository extends CrudRepository<User, Integer>{
+	boolean existsByUsername(String username);
 }

@@ -5,32 +5,41 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "username")
-public class User {
-
+@Table(name="users")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="username")
+public class User implements Serializable{
+    private int id;
     private String name;
     private String username;
     private String password;
-    private int enabled = 1;
-    private List<String> authority = new ArrayList<>();
+    private int enabled=1;
+    private List<String> authority=new ArrayList<>();
     private List<Event> attendedEvents;
     private List<Event> createdEvents;
 
-    public User() {  // Default constructor needed for model initialization.
+    public User(){  // Default constructor needed for model initialization.
     }
 
     @Id
-    @Column(name = "username", nullable = false, unique = true)
-    public String getUsername() {
+    public int getId(){
+        return id;
+    }
+
+    public void setId(int id){
+        this.id=id;
+    }
+
+    @Column(name="username", nullable=false, unique=true)
+    public String getUsername(){
         return username;
     }
 
-    public String getName() {
+    public String getName(){
         return name;
     }
 
@@ -63,7 +72,7 @@ public class User {
     }
 
     @ElementCollection
-    @CollectionTable(name = "authorities", joinColumns = @JoinColumn(name = "username"))
+    @CollectionTable(name="authorities", joinColumns=@JoinColumn(name="username", referencedColumnName="username"))
     @JsonIgnore
     public List<String> getAuthority() {
         return authority;
