@@ -22,13 +22,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {  // Spring Security Configuration
         http
-                .formLogin().defaultSuccessUrl("/home");
-        http
-                .csrf().disable();
-        http
-                .logout()
-                .logoutSuccessUrl("/login");
-
+                .formLogin().defaultSuccessUrl("/home")
+                .and()
+                .csrf().disable()
+                .logout().logoutSuccessUrl("/login");
     }
 
     @Override
