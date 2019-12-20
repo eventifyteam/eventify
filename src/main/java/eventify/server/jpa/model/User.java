@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="users")
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="username")
+@Table(name = "users")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class User implements Serializable{
     private int id;
     private String name;
