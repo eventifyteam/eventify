@@ -1,5 +1,6 @@
 package eventify.server.config;
 
+import eventify.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,7 +38,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void configAuthentication(final AuthenticationManagerBuilder auth, final DataSource dataSource) throws Exception {
+    public void configAuthentication(final AuthenticationManagerBuilder auth, final DataSource dataSource,
+                                     UserService userService) throws Exception {
+        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .usersByUsernameQuery("select username, password, enabled from users where username=?")

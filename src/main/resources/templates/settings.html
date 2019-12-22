@@ -40,7 +40,8 @@
         <div class="control-block">
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
-                    <img alt="author" src="../static/img/author-page.jpeg" th:src="@{/img/author-page.jpeg}"
+                    <img alt="author" src="../static/img/author-page.jpeg"
+                         th:src="@{/picture/{path}(path=${#authentication.getPrincipal().getId()})}"
                          class="profile-image">
                     <div class="more-dropdown more-with-triangle">
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -65,8 +66,8 @@
                     </div>
                 </div>
                 <a href="#" class="author-name fn">
-                    <div class="author-title">
-                        Sercan Akdeniz
+                    <div class="author-title" th:text="${#authentication.getPrincipal().getName()}">
+                        Prototype User
                     </div>
                     <span class="author-subtitle"></span> <!-- SAMPLE TEXT -->
                 </a>
@@ -107,13 +108,15 @@
                             <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="form-group label-floating">
                                     <label class="control-label">Your Name</label>
-                                    <input class="form-control" placeholder="" type="text" value="Sercan Akdeniz">
+                                    <input class="form-control" placeholder="" type="text" value="Prototype User"
+                                           th:value="${#authentication.getPrincipal().getName()}">
                                 </div>
 
                                 <div class="form-group label-floating">
                                     <label class="control-label">Your Email</label>
                                     <input class="form-control" placeholder="" type="email"
-                                           value="sercanakdeniz@eskisehir.edu.tr">
+                                           value="sercanakdeniz@eskisehir.edu.tr"
+                                           th:value="${#authentication.getPrincipal().getUsername()}">
                                 </div>
 
 

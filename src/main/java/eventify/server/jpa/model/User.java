@@ -3,30 +3,36 @@ package eventify.server.jpa.model;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "users")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class User implements Serializable{
+public class User implements Serializable, UserDetails {
     private int id;
     private String name;
     private String username;
     private String password;
-    private int enabled=1;
-    private List<String> authority=new ArrayList<>();
+    private boolean enabled = true;
+    private List<String> authority = new ArrayList<>();
     private List<Event> attendedEvents;
     private List<Event> createdEvents;
 
-    public User(){  // Default constructor needed for model initialization.
+    public User() {  // Default constructor needed for model initialization.
     }
 
     @Id
-    public int getId(){
+    public int getId() {
         return id;
     }
 
@@ -63,11 +69,11 @@ public class User implements Serializable{
 
     @Column(name = "enabled", nullable = false)
     @JsonIgnore
-    public int getEnabled() {
+    public boolean isEnabled() {
         return enabled;
     }
 
-    public void setEnabled(int enabled) {
+    public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 
@@ -99,5 +105,33 @@ public class User implements Serializable{
 
     public void setCreatedEvents(List<Event> createdEvents) {
         this.createdEvents = createdEvents;
+    }
+
+    @Override
+    @Transient
+    @JsonIgnore
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    @Transient
+    @JsonIgnore
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    @Transient
+    @JsonIgnore
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    @Transient
+    @JsonIgnore
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getAuthority().stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
     }
 }

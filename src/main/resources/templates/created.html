@@ -40,8 +40,9 @@
         <div class="control-block">
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
-                    <img alt="author" src="../static/img/author-page.jpeg" class="profile-image"
-                         th:src="@{/img/author-page.jpeg}">
+                    <img alt="author" src="../static/img/author-page.jpeg"
+                         th:src="@{/picture/{path}(path=${#authentication.getPrincipal().getId()})}"
+                         class="profile-image">
                     <div class="more-dropdown more-with-triangle">
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
                             <div class="ui-block-title ui-block-title-small">
@@ -49,7 +50,7 @@
                             </div>
                             <ul class="chat-settings">
                                 <li>
-                                    <a href="settings.html">
+                                    <a href="settings.html" th:href="@{/settings}">
                                         <span class="icon-status online"></span>
                                         <span>Profile Settings</span>
                                     </a>
@@ -64,9 +65,9 @@
                         </div>
                     </div>
                 </div>
-                <a href="settings.html" class="author-name fn">
-                    <div class="author-title">
-                        Sercan Akdeniz
+                <a href="#" class="author-name fn">
+                    <div class="author-title" th:text="${#authentication.getPrincipal().getName()}">
+                        Prototype User
                     </div>
                     <span class="author-subtitle"></span> <!-- SAMPLE TEXT -->
                 </a>
