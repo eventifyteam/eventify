@@ -26,6 +26,11 @@
             }
         });
     </script>
+    <style>
+        .profile-image {
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body class="page-has-left-panels page-has-right-panels">
 
@@ -145,6 +150,29 @@
                                         style="background-color: #08192d; border-color: #08192d">
                                     Update all Changes
                                 </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="ui-block-content">
+                    <form action="/uploadPicture" method="post" th:action="@{/uploadPicture}"
+                          enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-8 col-lg-12">
+
+                                <div class="form-group label-floating">
+                                    <label class="control-label" for="picture">Profile picture</label>
+                                    <input class="form-control" placeholder="Enter To Change" type="file"
+                                           name="picture" id="picture">
+                                </div>
+
+                                <div class="col-xs-6 col-sm-8 col-lg-12">
+                                    <button class="btn btn-primary btn-lg full-width"
+                                            style="background-color: #08192d; border-color: #08192d">
+                                        Upload
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </form>

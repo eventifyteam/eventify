@@ -23,7 +23,7 @@ public class FileSystemPictureStorage implements PictureStorage {
         String filename = String.valueOf(user.getId());
         try {
             try (InputStream inputStream = file.getInputStream()) {
-                Files.copy(inputStream, this.rootLocation.resolve(filename),
+                Files.copy(inputStream, this.rootLocation.resolve(filename + ".pic"),
                         StandardCopyOption.REPLACE_EXISTING);
             }
         } catch (IOException e) {

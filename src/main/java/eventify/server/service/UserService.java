@@ -24,12 +24,16 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
-    public boolean userExists(String username){
+    public User getCurrentUser() {
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
+
+    public boolean userExists(String username) {
         return userRepository.existsByUsername(username);
     }
 
-    public void createUser(User user){
-        if(userExists(user.getUsername())){
+    public void createUser(User user) {
+        if (userExists(user.getUsername())) {
             throw new IllegalStateException("User already exists. use userexists() before calling this method");
         }
 
@@ -50,7 +54,7 @@ public class UserService implements UserDetailsService {
     }
 
     public void updateUser(User settings) {
-        final User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        final User currentUser = getCurrentUser();
         if (!settings.getPassword().equals(""))
             currentUser.setPassword(settings.getPassword());
         currentUser.setName(settings.getName());
