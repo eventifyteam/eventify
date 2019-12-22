@@ -61,13 +61,13 @@ public class UserController{
     @PostMapping("uploadPicture")
     public String uploadProfilePicture(MultipartFile picture) {
         pictureStorage.store(picture, userService.getCurrentUser());
-        return "settings";
+        return "redirect:/settings";
     }
 
     @PostMapping("updateProfile")
     public String updateProfile(User user) {
         userService.updateUser(user);
-        return "settings";
+        return "redirect:/settings";
     }
 
 }
