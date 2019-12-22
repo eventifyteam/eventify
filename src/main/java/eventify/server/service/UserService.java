@@ -3,6 +3,7 @@ package eventify.server.service;
 import eventify.server.jpa.model.User;
 import eventify.server.jpa.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -46,6 +47,15 @@ public class UserService implements UserDetailsService {
         final User user = userRepository.findByUsername(s);
         user.getAuthorities();
         return user;
+    }
+
+    public void updateUser(User settings) {
+        final User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (!settings.getPassword().equals(""))
+            currentUser.setPassword(settings.getPassword());
+        currentUser.setName(settings.getName());
+        currentUser.setUsername(settings.getUsername());
+        userRepository.save(currentUser);
     }
 
 }

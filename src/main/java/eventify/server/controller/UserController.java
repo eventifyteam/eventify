@@ -62,7 +62,14 @@ public class UserController{
         return ResponseEntity.ok(resource);
     }
 
+    @PostMapping("uploadPicture")
     public String uploadProfilePicture(MultipartFile picture) {
+        return "settings";
+    }
+
+    @PostMapping("updateProfile")
+    public String updateProfile(User user) {
+        userService.updateUser(user);
         return "settings";
     }
 

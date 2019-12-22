@@ -102,20 +102,21 @@
                 <div class="ui-block-content">
 
 
-                    <form>
+                    <form action="/updateProfile" method="post" th:action="@{/updateProfile}">
                         <div class="row">
 
                             <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">Your Name</label>
-                                    <input class="form-control" placeholder="" type="text" value="Prototype User"
+                                    <label class="control-label" for="name">Your Name</label>
+                                    <input class="form-control" name="name" id="name" type="text" value="Prototype User"
                                            th:value="${#authentication.getPrincipal().getName()}">
                                 </div>
 
                                 <div class="form-group label-floating">
-                                    <label class="control-label">Your Email</label>
+                                    <label class="control-label" for="username">Your Email</label>
                                     <input class="form-control" placeholder="" type="email"
                                            value="sercanakdeniz@eskisehir.edu.tr"
+                                           id="username" name="username"
                                            th:value="${#authentication.getPrincipal().getUsername()}">
                                 </div>
 
@@ -125,22 +126,24 @@
                             <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 
                                 <div class="form-group label-floating">
-                                    <label class="control-label">Your Password</label>
-                                    <input class="form-control" placeholder="" type="password" value="serco1122">
+                                    <label class="control-label" for="password">Your Password</label>
+                                    <input class="form-control" placeholder="Enter To Change" type="password"
+                                           name="password" id="password">
                                 </div>
 
 
                                 <div class="form-group label-floating is-empty">
-                                    <label class="control-label">Your Phone Number</label>
+                                    <label class="control-label" for="number">Your Phone Number</label>
                                     <!-- NOT IMPLEMENTED IN THE BACK-END YET -->
-                                    <input class="form-control" placeholder="" type="text">
+                                    <input class="form-control" placeholder="" type="text" id="number" name="number">
                                 </div>
                             </div>
 
 
                             <div class="col-xs-6 col-sm-8 col-lg-12">
                                 <button class="btn btn-primary btn-lg full-width"
-                                        style="background-color: #08192d; border-color: #08192d">Update all Changes
+                                        style="background-color: #08192d; border-color: #08192d">
+                                    Update all Changes
                                 </button>
                             </div>
                         </div>
