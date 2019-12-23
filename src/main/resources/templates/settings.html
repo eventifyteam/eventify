@@ -37,7 +37,7 @@
 <header class="header" id="site-header" style="background-color: #08192d">
 
     <div class="page-title">
-        <h6>Eventify</h6>
+        <a href="/home"><h6 style="color: white;">Eventify</h6></a>
     </div>
 
     <div class="header-content-wrapper">
@@ -61,7 +61,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="login.html" th:href="@{/login}">
+                                    <a href="/index" th:href="@{/logout}">
                                         <span class="icon-status disconected"></span>
                                         <span>Log Out</span>
                                     </a>
@@ -94,19 +94,9 @@
             <div class="ui-block">
                 <div class="ui-block-title">
                     <h6 class="title">Profile Settings</h6>
-                    <a href="#" class="more">
-                        <svg class="olymp-three-dots-icon">
-                            <use xlink:href="svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
-                        </svg>
-                    </a>
                 </div>
-
-
                 <!-- Settings -->
-
                 <div class="ui-block-content">
-
-
                     <form action="/updateProfile" method="post" th:action="@{/updateProfile}">
                         <div class="row">
 
@@ -132,12 +122,12 @@
 
                                 <div class="form-group label-floating">
                                     <label class="control-label" for="password">Your Password</label>
-                                    <input class="form-control" placeholder="Enter To Change" type="password"
+                                    <input class="form-control" placeholder="**********" type="password"
                                            name="password" id="password">
                                 </div>
 
 
-                                <div class="form-group label-floating is-empty">
+                                <div class="form-group label-floating">
                                     <label class="control-label" for="number">Your Phone Number</label>
                                     <!-- NOT IMPLEMENTED IN THE BACK-END YET -->
                                     <input class="form-control" placeholder="" type="text" id="number" name="number">
