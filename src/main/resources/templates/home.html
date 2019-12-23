@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../static/Bootstrap/dist/css/bootstrap-grid.css"
           th:href="@{/Bootstrap/dist/css/bootstrap-grid.css}">
 
-    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/portal.css" th:href="@{/css/portal.css}">
     <link rel="stylesheet" type="text/css" href="../static/css/fonts.min.css" th:href="@{/css/fonts.min.css}">
 
     <script src="../static/js/webfontloader.min.js" th:href="@{/js/webfontloader.min.js}"></script>
@@ -26,14 +26,17 @@
             }
         });
     </script>
-
     <style>
-        .profile-image {
-            object-fit: cover;
+        span {
+            color: black;
+        }
+
+        .bg-secondary2 {
+            background-color: #ee4749;
         }
     </style>
 </head>
-<body class="page-has-left-panels page-has-right-panels">
+<body class="page-has-left-panels page-has-right-panels" style="background-color: white">
 
 <header class="header" id="site-header" style="background-color: #08192d">
 
@@ -87,9 +90,115 @@
 <div class="header-spacer header-spacer-small"></div>
 <div style="margin-bottom: 3%"></div>
 
+<div class="container">
+    <div class="row">
+        <div class="timeline-centered">
 
-<!-- Home Code Here -->
+            <article class="timeline-entry">
 
+                <div class="timeline-entry-inner">
+                    <time class="timeline-time" datetime="2019-12-24T21:00"><span>07:00 PM</span> <span>Today</span>
+                    </time>
+
+                    <div class="timeline-icon bg-success">
+                        <i class="entypo-feather"></i>
+                    </div>
+
+                    <div class="timeline-label">
+                        <h2><a href="#">Sercan Akdeniz</a> <span>created a study event in </span>Eskişehir Technical
+                            University</h2>
+                        <p>"I have been struggling to study by myself lately. Anyone up to join me?"</p>
+                    </div>
+                </div>
+
+            </article>
+
+            <article class="timeline-entry">
+
+                <div class="timeline-entry-inner">
+                    <time class="timeline-time" datetime="2019-12-25T22:00"><span>10:00 PM</span>
+                        <span>25 Dec 2019</span>
+                    </time>
+
+                    <div class="timeline-icon bg-secondary2">
+                        <i class="entypo-feather"></i>
+                    </div>
+
+                    <div class="timeline-label">
+                        <h2><a href="#">Emre Tanrıverdi</a> <span>created a drinking event in </span>Social Pub</h2>
+                        <p>"Hi guys! Wanna have some beer? ;)"</p>
+                    </div>
+                </div>
+
+            </article>
+
+            <article class="timeline-entry">
+
+                <div class="timeline-entry-inner">
+                    <time class="timeline-time" datetime="2019-12-28T21:00"><span>09:00 PM</span>
+                        <span>28 Dec 2019</span>
+                    </time>
+
+                    <div class="timeline-icon bg-info">
+                        <i class="entypo-feather"></i>
+                    </div>
+
+                    <div class="timeline-label">
+                        <h2><a href="#">Salih Başaran</a> <span>created a coffee event in </span>Mackbear</h2>
+                        <p>"I have been craving for coffee for days! Wanna grab a latte?"</p>
+                    </div>
+                </div>
+
+            </article>
+
+            <article class="timeline-entry">
+
+                <div class="timeline-entry-inner">
+                    <time class="timeline-time" datetime="2020-01-0320:00"><span>20:00 PM</span>
+                        <span>03 Jan 2020</span>
+                    </time>
+
+                    <div class="timeline-icon bg-warning">
+                        <i class="entypo-feather"></i>
+                    </div>
+
+                    <div class="timeline-label">
+                        <h2><a href="#">Aytaç Kayadelen</a> <span>created a dinner event in </span>McDonald's</h2>
+                        <p>"Who can say no to a delicious Big Mac?"</p>
+                    </div>
+                </div>
+
+            </article>
+
+            <article class="timeline-entry">
+                <div class="timeline-label" style="visibility: hidden">
+                    <!-- En sondaki paragrafta yeterince uzun bir text olmazsa yazıların hepsi sola kayıyor,
+                     bu sebeple buraya hidden 'div' ekledim. Lütfen silmeyin, veya silecekseniz de sitenin
+                     sola kaymasına hazır olun XD XD XD XD XD -->
+                    <p style="color: white;">"Congrats!<br>You have found the hidden text!<br><br>This website is made
+                        by Eventify Team!<br>We are here for you! Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+                        amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem
+                        ipsum dolor sit amet. Lorem ipsum dolor sit amet."</p>
+                </div>
+            </article>
+
+
+            <article class="timeline-entry begin">
+
+                <div class="timeline-entry-inner">
+
+                    <div class="timeline-icon"
+                         style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg); background-color: darkgray">
+                        <i class="entypo-flight"></i>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+    </div>
+</div>
 
 <a class="back-to-top" href="#" style="background-color: #08192d">
     <img src="../static/svg-icons/back-to-top.svg" th:src="@{/svg-icons/back-to-top.svg}" alt="arrow" class="back-icon">
