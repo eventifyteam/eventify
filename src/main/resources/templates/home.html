@@ -220,7 +220,8 @@
         Object.keys(apiData).forEach((apiDataKey) => {
             markerPositions[apiDataKey] = {
                 lat: apiData[apiDataKey]['lat'],
-                lng: apiData[apiDataKey]['lng']
+                lng: apiData[apiDataKey]['lng'],
+                name: apiData[apiDataKey]['name']
             };
         });
 
@@ -242,8 +243,8 @@
 
     // Initialize and add the map
     function initMap() {
-        var apiUrl = 'https://eventify.ddns.net/test/allEvents';
-        fetch(apiUrl).then((res) => res.json()).then((apiData) => {
+        var apiUrl = './test/allEvents';
+        fetch(apiUrl, {mode: 'no-cors'}).then((res) => res.json()).then((apiData) => {
             var markers = getMarkerPositions(apiData);
             var map = new google.maps.Map(document.getElementById('map'), {zoom: 13, center: {lat: 39.77, lng: 30.52}});
             addMarkersToMap(markers, map);
