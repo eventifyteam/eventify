@@ -23,6 +23,7 @@
             }
         });
     </script>
+
     <style>
         span {
             color: black;
@@ -37,9 +38,30 @@
             height: 750px;  /* The height is 400 pixels */
             width: 50%;  /* The width is the width of the web page */
         }
+
+        .timeline-centered:before {
+            left: 155px;
+        }
+
+        .timeline-centered {
+            margin-left: auto;
+            margin-bottom: 0;
+            height: calc(100vh - 70px);
+            overflow-y: scroll
+        }
+
+        .timeline-centered .timeline-entry {
+            padding-top: 5px;
+            width: calc(100% - 140px);
+        }
+    </style>
+    <style>
+        .profile-image {
+            object-fit: cover;
+        }
     </style>
 </head>
-<body class="page-has-left-panels page-has-right-panels" style="background-color: white">
+<body style="background-color: white">
 
 <header class="header" id="site-header" style="background-color: #08192d">
 
@@ -91,9 +113,8 @@
 </header>
 
 <div class="header-spacer header-spacer-small"></div>
-<div style="margin-bottom: 3%"></div>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div id="map"></div>
         <script>
@@ -129,7 +150,7 @@
                     var markers = getMarkerPositions(apiData);
                     var map = new google.maps.Map(document.getElementById('map'), {zoom: 13, center: {lat: 39.77, lng: 30.52}});
                     addMarkersToMap(markers, map);
-                })  
+                })
             }
         </script>
 
@@ -142,7 +163,7 @@
             <article class="timeline-entry">
 
                 <div class="timeline-entry-inner">
-                    <time class="timeline-time" datetime="2019-12-24T21:00"><span>07:00 PM</span> <span>Today</span>
+                    <time class="timeline-time" datetime="2020-01-06T21:00"><span>07:00 PM</span> <span>Today</span>
                     </time>
 
                     <div class="timeline-icon bg-success">
@@ -152,7 +173,7 @@
                     <div class="timeline-label">
                         <h2><a href="#">Sercan Akdeniz</a> <span>created a study event in </span>Eskişehir Technical
                             University</h2>
-                        <p>"I have been struggling to study by myself lately. Anyone up to join me?"</p>
+                        <p>"I have been struggling to study by myself lately. Anyone up to join me?"&emsp;<a href="#" style="color: darkred; font-size: 16px">Join!</a></p>
                     </div>
                 </div>
 
@@ -161,8 +182,8 @@
             <article class="timeline-entry">
 
                 <div class="timeline-entry-inner">
-                    <time class="timeline-time" datetime="2019-12-25T22:00"><span>10:00 PM</span>
-                        <span>25 Dec 2019</span>
+                    <time class="timeline-time" datetime="2020-01-08T22:00"><span>10:00 PM</span>
+                        <span>08 Jan 2020</span>
                     </time>
 
                     <div class="timeline-icon bg-secondary2">
@@ -171,7 +192,7 @@
 
                     <div class="timeline-label">
                         <h2><a href="#">Emre Tanrıverdi</a> <span>created a drinking event in </span>Social Pub</h2>
-                        <p>"Hi guys! Wanna have some beer? ;)"</p>
+                        <p>"Hi guys! Wanna have some beer? ;)"&emsp;<a href="#" style="color: darkred; font-size: 16px">Join!</a></p>
                     </div>
                 </div>
 
@@ -180,8 +201,8 @@
             <article class="timeline-entry">
 
                 <div class="timeline-entry-inner">
-                    <time class="timeline-time" datetime="2019-12-28T21:00"><span>09:00 PM</span>
-                        <span>28 Dec 2019</span>
+                    <time class="timeline-time" datetime="2020-01-13T21:00"><span>09:00 PM</span>
+                        <span>13 Jan 2020</span>
                     </time>
 
                     <div class="timeline-icon bg-info">
@@ -190,7 +211,7 @@
 
                     <div class="timeline-label">
                         <h2><a href="#">Salih Başaran</a> <span>created a coffee event in </span>Mackbear</h2>
-                        <p>"I have been craving for coffee for days! Wanna grab a latte?"</p>
+                        <p>"I have been craving for coffee for days! Wanna grab a latte?"&emsp;<a href="#" style="color: darkred; font-size: 16px">Join!</a></p>
                     </div>
                 </div>
 
@@ -199,8 +220,8 @@
             <article class="timeline-entry">
 
                 <div class="timeline-entry-inner">
-                    <time class="timeline-time" datetime="2020-01-0320:00"><span>20:00 PM</span>
-                        <span>03 Jan 2020</span>
+                    <time class="timeline-time" datetime="2020-01-1520:00"><span>08:00 PM</span>
+                        <span>15 Jan 2020</span>
                     </time>
 
                     <div class="timeline-icon bg-warning">
@@ -209,24 +230,11 @@
 
                     <div class="timeline-label">
                         <h2><a href="#">Aytaç Kayadelen</a> <span>created a dinner event in </span>McDonald's</h2>
-                        <p>"Who can say no to a delicious Big Mac?"</p>
+                        <p>"Who can say no to a delicious Big Mac?"&emsp;<a href="#" style="color: darkred; font-size: 16px">Join!</a></p>
                     </div>
                 </div>
 
             </article>
-
-            <article class="timeline-entry">
-                <div class="timeline-label" style="visibility: hidden">
-                    <!-- En sondaki paragrafta yeterince uzun bir text olmazsa yazıların hepsi sola kayıyor,
-                     bu sebeple buraya hidden 'div' ekledim. Lütfen silmeyin, veya silecekseniz de sitenin
-                     sola kaymasına hazır olun XD XD XD XD XD -->
-                    <p style="color: white;">"Congrats!<br>You have found the hidden text!<br><br>This website is made
-                        by Eventify Team!<br>We are here for you! Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-                        amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem
-                        ipsum dolor sit amet. Lorem ipsum dolor sit amet."</p>
-                </div>
-            </article>
-
 
             <article class="timeline-entry begin">
 
