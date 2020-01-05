@@ -33,12 +33,6 @@
             background-color: #ee4749;
         }
 
-        /* Set the size of the div element that contains the map */
-        #map {
-            height: 750px;  /* The height is 400 pixels */
-            width: 50%;  /* The width is the width of the web page */
-        }
-
         .timeline-centered:before {
             left: 155px;
         }
@@ -116,49 +110,10 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div id="map"></div>
-        <script>
+        <div class="col-lg-6 col-md-12 col-xs-12 bg-primary" id="map">
 
-            function getMarkerPositions (apiData) {
-                var markerPositions = {};
-                Object.keys(apiData).forEach((apiDataKey) => {
-                    markerPositions[apiDataKey] = {
-                        lat: apiData[apiDataKey]['lat'],
-                        lng: apiData[apiDataKey]['lng']
-                    };
-                });
-
-                return markerPositions;
-            }
-
-            function addMarkersToMap(markerPositions, mapElement) {
-                Object.keys(markerPositions).forEach((markerPositionKey) => {
-                    new google.maps.Marker({
-                        position: {
-                            lat: markerPositions[markerPositionKey]['lat'],
-                            lng: markerPositions[markerPositionKey]['lng'],
-                        },
-                        map: mapElement
-                    })
-                });
-            }
-
-            // Initialize and add the map
-            function initMap() {
-                var apiUrl = 'https://eventify.ddns.net/test/allEvents';
-                fetch(apiUrl).then((res) => res.json()).then((apiData) => {
-                    var markers = getMarkerPositions(apiData);
-                    var map = new google.maps.Map(document.getElementById('map'), {zoom: 13, center: {lat: 39.77, lng: 30.52}});
-                    addMarkersToMap(markers, map);
-                })
-            }
-        </script>
-
-        <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnvsKwYr5v2G9q_nx5-OcVD6XvddsG1k8&callback=initMap">
-        </script>
-
-        <div class="timeline-centered" style='width: 57.5% !important;margin: 0 0 0 -7.5vw !important; padding: 0px !important;'>
+        </div>
+        <div class="timeline-centered  col-lg-6 col-md-12 col-xs-12">
 
             <article class="timeline-entry">
 
@@ -256,5 +211,48 @@
 <a class="back-to-top" href="#" style="background-color: #08192d">
     <img src="../static/svg-icons/back-to-top.svg" th:src="@{/svg-icons/back-to-top.svg}" alt="arrow" class="back-icon">
 </a>
+
+
+<script>
+
+    function getMarkerPositions(apiData) {
+        var markerPositions = {};
+        Object.keys(apiData).forEach((apiDataKey) => {
+            markerPositions[apiDataKey] = {
+                lat: apiData[apiDataKey]['lat'],
+                lng: apiData[apiDataKey]['lng']
+            };
+        });
+
+        return markerPositions;
+    }
+
+    function addMarkersToMap(markerPositions, mapElement) {
+        Object.keys(markerPositions).forEach((markerPositionKey) => {
+            new google.maps.Marker({
+                position: {
+                    lat: markerPositions[markerPositionKey]['lat'],
+                    lng: markerPositions[markerPositionKey]['lng'],
+                },
+                map: mapElement
+            })
+        });
+    }
+
+    // Initialize and add the map
+    function initMap() {
+        var apiUrl = 'https://eventify.ddns.net/test/allEvents';
+        fetch(apiUrl).then((res) => res.json()).then((apiData) => {
+            var markers = getMarkerPositions(apiData);
+            var map = new google.maps.Map(document.getElementById('map'), {zoom: 13, center: {lat: 39.77, lng: 30.52}});
+            addMarkersToMap(markers, map);
+        })
+    }
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnvsKwYr5v2G9q_nx5-OcVD6XvddsG1k8&callback=initMap">
+</script>
+
 </body>
 </html>
