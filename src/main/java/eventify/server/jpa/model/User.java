@@ -90,6 +90,7 @@ public class User implements Serializable, UserDetails {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "AttendMap", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
+    @JsonIgnore
     public List<Event> getAttendedEvents() {
         return attendedEvents;
     }
@@ -99,6 +100,7 @@ public class User implements Serializable, UserDetails {
     }
 
     @OneToMany(mappedBy = "creator", fetch = FetchType.EAGER)
+    @JsonIgnore
     public List<Event> getCreatedEvents() {
         return createdEvents;
     }

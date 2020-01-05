@@ -1,6 +1,8 @@
 package eventify.server.service;
 
+import eventify.server.jpa.model.Event;
 import eventify.server.jpa.model.User;
+import eventify.server.jpa.repository.EventRepository;
 import eventify.server.jpa.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,14 +12,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service("userDetailsService")
 public class UserService implements UserDetailsService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final EventRepository eventRepository;
 
-    @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, EventRepository eventRepository) {
         this.userRepository = userRepository;
+        this.eventRepository = eventRepository;
     }
 
     public Iterable<User> getUsers() {
@@ -62,4 +67,23 @@ public class UserService implements UserDetailsService {
         userRepository.save(currentUser);
     }
 
+    public void joinEvent(Integer eventId) {
+        Optional<Event> eventOptional = eventRepository.findById(eventId);
+        if (eventOptional.isPresent()) {
+            Event joinedEvent = eventOptional.get();
+            User currentUser = getCurrentUser();
+            currentUser.getAttendedEvents().add(joinedEvent);
+            userRepository.save(currentUser);
+        }
+    }
+
+    public void cancelJoin(Integer eventId) {
+        Optional<Event> eventOptional = eventRepository.findById(eventId);
+        if (eventOptional.isPresent()) {
+            Event joinedEvent = eventOptional.get();
+            User currentUser = getCurrentUser();
+            currentUser.getAttendedEvents().remove(joinedEvent);
+            userRepository.save(currentUser);
+        }
+    }
 }

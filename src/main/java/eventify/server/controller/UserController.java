@@ -70,4 +70,16 @@ public class UserController{
         return "redirect:/settings";
     }
 
+    @GetMapping("joinEvent/{eventId}")
+    public String joinEvent(@PathVariable Integer eventId) {
+        userService.joinEvent(eventId);
+        return "home";
+    }
+
+    @GetMapping("cancelJoin/{eventId}")
+    public String cancelJoin(@PathVariable Integer eventId) {
+        userService.cancelJoin(eventId);
+        return "home";
+    }
+
 }

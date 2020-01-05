@@ -213,8 +213,9 @@
 </a>
 
 
-<script>
+<script th:inline="javascript">
     function addMarkerToMap(eventData, mapElement) {
+        console.log(eventData);
         new google.maps.Marker({
             position: {
                 lat: eventData['lat'],
@@ -227,14 +228,18 @@
 
     // Initialize and add the map
     function initMap() {
-        var apiUrl = './test/allEvents';
-        fetch(apiUrl).then((res) => res.json()).then((apiData) => {
-            var map = new google.maps.Map(document.getElementById('map'), {zoom: 13, center: {lat: 39.77, lng: 30.52}});
+        var apiUrl = /*[[@{/test/allEvents}]]*/
+            fetch(apiUrl).then((res) => res.json()).then((apiData) => {
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 13,
+                    center: {lat: 39.77, lng: 30.52}
+                });
+                console.log(apiData);
 
-            Object.keys(apiData).forEach((eventIndex) => {
-                addMarkerToMap(apiData[eventIndex], map);
-            });
-        })
+                Object.keys(apiData).forEach((eventIndex) => {
+                    addMarkerToMap(apiData[eventIndex], map);
+                });
+            })
     }
 </script>
 
