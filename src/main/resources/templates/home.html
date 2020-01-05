@@ -32,6 +32,22 @@
         .bg-secondary2 {
             background-color: #ee4749;
         }
+
+        .timeline-centered:before {
+            left: 155px;
+        }
+
+        .timeline-centered {
+            margin-left: auto;
+            margin-bottom: 0;
+            height: calc(100vh - 70px);
+            overflow-y: scroll
+        }
+
+        .timeline-centered .timeline-entry {
+            padding-top: 5px;
+            width: calc(100% - 140px);
+        }
     </style>
     <style>
         .profile-image {
@@ -39,7 +55,7 @@
         }
     </style>
 </head>
-<body class="page-has-left-panels page-has-right-panels" style="background-color: white">
+<body style="background-color: white">
 
 <header class="header" id="site-header" style="background-color: #08192d">
 
@@ -91,11 +107,10 @@
 </header>
 
 <div class="header-spacer header-spacer-small"></div>
-<div style="margin-bottom: 3%"></div>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="timeline-centered">
+        <div class="timeline-centered col-6">
 
             <article class="timeline-entry">
 
@@ -172,19 +187,6 @@
                 </div>
 
             </article>
-
-            <article class="timeline-entry">
-                <div class="timeline-label" style="visibility: hidden">
-                    <!-- En sondaki paragrafta yeterince uzun bir text olmazsa yazıların hepsi sola kayıyor,
-                     bu sebeple buraya hidden 'div' ekledim. Lütfen silmeyin, veya silecekseniz de sitenin
-                     sola kaymasına hazır olun XD XD XD XD XD -->
-                    <p style="color: white;">"Congrats!<br>You have found the hidden text!<br><br>This website is made
-                        by Eventify Team!<br>We are here for you! Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-                        amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem
-                        ipsum dolor sit amet. Lorem ipsum dolor sit amet."</p>
-                </div>
-            </article>
-
 
             <article class="timeline-entry begin">
 
