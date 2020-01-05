@@ -35,19 +35,26 @@
         }
 
         .timeline-centered:before {
-            left: 155px;
+            left: 120px;
+            top: 0;
+            bottom: 0;
+        }
+
+        .right-panel {
+            margin: 0 !important;
+            padding: 0 !important;
+            height: calc(100vh - 70px);
+            overflow-y: scroll
         }
 
         .timeline-centered {
             margin-left: auto;
             margin-bottom: 0;
-            height: calc(100vh - 70px);
-            overflow-y: scroll
         }
 
         .timeline-centered .timeline-entry {
             padding-top: 5px;
-            width: calc(100% - 140px);
+            width: calc(100% - 120px);
         }
     </style>
     <style>
@@ -142,141 +149,175 @@
         <div class="col-lg-6 col-md-12 col-xs-12 bg-primary" id="map">
 
         </div>
-        <div class="timeline-centered  col-lg-6 col-md-12 col-xs-12">
+        <div class="col-lg-6 col-md-12 col-xs-12 right-panel">
+            <div class="news-feed-form">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item"></li>
+                    <li class="nav-item"></li>
 
-			<div class="news-feed-form">
-					<!-- Nav tabs -->
-					<ul class="nav nav-tabs" role="tablist">
-						<li class="nav-item"> </li>
-						<li class="nav-item"> </li>
+                    <li class="nav-item"></li>
+                </ul>
 
-						<li class="nav-item"> </li>
-					</ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
+                        <form>
+                            <div class="author-thumb">
+                                <img alt="author" src="../static/img/author-page.jpeg"
+                                     th:src="@{/picture/{path}(path=${#authentication.getPrincipal().getId()})}"
+                                     class="profile-image">
+                            </div>
+                            <div class="form-group with-icon label-floating is-empty">
+                                <textarea class="form-control" placeholder="Create your event"></textarea>
+                            </div>
+                            <div class="add-options-message">
+                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"
+                                   data-original-title="ADD PHOTOS">
+                                    <svg class="olymp-camera-icon" data-toggle="modal"
+                                         data-target="#update-header-photo">
+                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use>
+                                    </svg>
+                                </a>
+                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"
+                                   data-original-title="TAG YOUR FRIENDS">
+                                    <svg class="olymp-computer-icon">
+                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use>
+                                    </svg>
+                                </a>
 
-					<!-- Tab panes -->
-					<div class="tab-content">
-						<div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
-							<form>
-								<div class="author-thumb">
-									<img alt="author" src="../static/img/author-page.jpeg"
-                         th:src="@{/picture/{path}(path=${#authentication.getPrincipal().getId()})}"
-                         class="profile-image">
-								</div>
-								<div class="form-group with-icon label-floating is-empty">
-									<textarea class="form-control" placeholder="Create your event"></textarea>
-								</div>
-								<div class="add-options-message">
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-										<svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
-									</a>
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
-										<svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-									</a>
+                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"
+                                   data-original-title="ADD LOCATION">
+                                    <svg class="olymp-small-pin-icon">
+                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use>
+                                    </svg>
+                                </a>
 
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
-										<svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
-									</a>
+                                <button class="btn btn-primary btn-md-2"
+                                        style="background-color: #08192d; border-color: #08192d">Create Event
+                                </button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+                                        data-lat=' 39.76' data-lng='30.52'>Location
+                                </button>
+                            </div>
 
-									<button class="btn btn-primary btn-md-2" style="background-color: #08192d; border-color: #08192d">Create Event</button>
-									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-lat=' 39.76' data-lng='30.52'>Location
-									</button>
-								</div>
-
-							</form>
-						</div>
-
-						<div class="tab-pane" id="profile-1" role="tabpanel" aria-expanded="true">
-							<form>
-								<div class="author-thumb">
-									<img src="img/author-page.jpg" alt="author">
-								</div>
-								<div class="form-group with-icon label-floating is-empty">
-									<label class="control-label">Share what you are thinking here...</label>
-									<textarea class="form-control" placeholder=""  ></textarea>
-								</div>
-								<div class="add-options-message">
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-										<svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
-									</a>
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
-										<svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-									</a>
-
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
-										<svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
-									</a>
-
-									<button class="btn btn-primary btn-md-2">Post Status</button>
-									<button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
-
-								</div>
-
-							</form>
-						</div>
-
-						<div class="tab-pane" id="blog" role="tabpanel" aria-expanded="true">
-							<form>
-								<div class="author-thumb">
-									<img src="img/author-page.jpg" alt="author">
-								</div>
-								<div class="form-group with-icon label-floating is-empty">
-									<label class="control-label">Share what you are thinking here...</label>
-									<textarea class="form-control" placeholder=""  ></textarea>
-								</div>
-								<div class="add-options-message">
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-										<svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use></svg>
-									</a>
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="TAG YOUR FRIENDS">
-										<svg class="olymp-computer-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use></svg>
-									</a>
-
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD LOCATION">
-										<svg class="olymp-small-pin-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use></svg>
-									</a>
-
-									<button class="btn btn-primary btn-md-2">Post Status</button>
-									<button   class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
-
-								</div>
-
-							</form>
-						</div>
-					</div>
-				</div>
-
-            <article class="timeline-entry" th:each="event, iStat : ${@eventService.getIncomingEvents()}">
-                <div class="timeline-entry-inner">
-                    <time class="timeline-time" th:datetime="${event.getDate()}"><span
-                            th:text="${event.getDate().getHour()+':'+event.getDate().getMinute()}">07:00 PM</span>
-                        <span th:text="${event.getDate().getYear()+'-'+event.getDate().getMonth().name().substring(0,3)+'-'+event.getDate().getDayOfMonth()}"></span>
-                    </time>
-
-                    <div class="timeline-icon"
-                         th:classappend="${iStat.index%3==0}? 'bg-success' : (${iStat.index%3==1}? 'bg-secondary2' : 'bg-info')">
-                        <i class="entypo-feather"></i>
+                        </form>
                     </div>
 
-                    <div class="timeline-label">
-                        <h2>
+                    <div class="tab-pane" id="profile-1" role="tabpanel" aria-expanded="true">
+                        <form>
                             <div class="author-thumb">
-                                <img src="../static/img/author-page.jpeg" alt="author" class="profile-image"
-                                     th:src="@{/picture/{id}(id=${event.getCreator().getId()})}">
+                                <img src="img/author-page.jpg" alt="author">
                             </div>
-                            <a href="#" th:text="${event.getCreator().getName()}">Sercan Akdeniz</a> <span
-                                th:text="${event.getName()}">Event name here</span></h2>
-                        <th:block
-                                th:with="condition=${@userDetailsService.getCurrentUser().getAttendedEvents().contains(event)}">
-                            <a th:unless="${condition}" th:href="@{/joinEvent/{id}(id=${event.getId()})}"
-                               style="color: darkred; font-size: 16px">Join!</a>
-                            <a th:if="${condition}" th:href="@{/cancelJoin/{id}(id=${event.getId()})}"
-                               style="color: darkred; font-size: 16px">Cancel</a>
-                        </th:block>
-                        </p>
+                            <div class="form-group with-icon label-floating is-empty">
+                                <label class="control-label">Share what you are thinking here...</label>
+                                <textarea class="form-control" placeholder=""></textarea>
+                            </div>
+                            <div class="add-options-message">
+                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"
+                                   data-original-title="ADD PHOTOS">
+                                    <svg class="olymp-camera-icon" data-toggle="modal"
+                                         data-target="#update-header-photo">
+                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use>
+                                    </svg>
+                                </a>
+                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"
+                                   data-original-title="TAG YOUR FRIENDS">
+                                    <svg class="olymp-computer-icon">
+                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use>
+                                    </svg>
+                                </a>
+
+                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"
+                                   data-original-title="ADD LOCATION">
+                                    <svg class="olymp-small-pin-icon">
+                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use>
+                                    </svg>
+                                </a>
+
+                                <button class="btn btn-primary btn-md-2">Post Status</button>
+                                <button class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
+
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <div class="tab-pane" id="blog" role="tabpanel" aria-expanded="true">
+                        <form>
+                            <div class="author-thumb">
+                                <img src="img/author-page.jpg" alt="author">
+                            </div>
+                            <div class="form-group with-icon label-floating is-empty">
+                                <label class="control-label">Share what you are thinking here...</label>
+                                <textarea class="form-control" placeholder=""></textarea>
+                            </div>
+                            <div class="add-options-message">
+                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"
+                                   data-original-title="ADD PHOTOS">
+                                    <svg class="olymp-camera-icon" data-toggle="modal"
+                                         data-target="#update-header-photo">
+                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use>
+                                    </svg>
+                                </a>
+                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"
+                                   data-original-title="TAG YOUR FRIENDS">
+                                    <svg class="olymp-computer-icon">
+                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use>
+                                    </svg>
+                                </a>
+
+                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"
+                                   data-original-title="ADD LOCATION">
+                                    <svg class="olymp-small-pin-icon">
+                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use>
+                                    </svg>
+                                </a>
+
+                                <button class="btn btn-primary btn-md-2">Post Status</button>
+                                <button class="btn btn-md-2 btn-border-think btn-transparent c-grey">Preview</button>
+
+                            </div>
+
+                        </form>
                     </div>
                 </div>
-            </article>
+            </div>
 
+            <div class="timeline-centered">
+                <article class="timeline-entry" th:each="event, iStat : ${@eventService.getIncomingEvents()}">
+                    <div class="timeline-entry-inner">
+                        <time class="timeline-time" th:datetime="${event.getDate()}"><span
+                                th:text="${event.getDate().getHour()+':'+event.getDate().getMinute()}">07:00 PM</span>
+                            <span th:text="${event.getDate().getYear()+'-'+event.getDate().getMonth().name().substring(0,3)+'-'+event.getDate().getDayOfMonth()}"></span>
+                        </time>
+
+                        <div class="timeline-icon"
+                             th:classappend="${iStat.index%3==0}? 'bg-success' : (${iStat.index%3==1}? 'bg-secondary2' : 'bg-info')">
+                            <i class="entypo-feather"></i>
+                        </div>
+
+                        <div class="timeline-label">
+                            <h2>
+                                <div class="author-thumb">
+                                    <img src="../static/img/author-page.jpeg" alt="author" class="profile-image"
+                                         th:src="@{/picture/{id}(id=${event.getCreator().getId()})}">
+                                </div>
+                                <a href="#" th:text="${event.getCreator().getName()}">Sercan Akdeniz</a> <span
+                                    th:text="${event.getName()}">Event name here</span></h2>
+                            <th:block
+                                    th:with="condition=${@userDetailsService.getCurrentUser().getAttendedEvents().contains(event)}">
+                                <a th:unless="${condition}" th:href="@{/joinEvent/{id}(id=${event.getId()})}"
+                                   style="color: darkred; font-size: 16px">Join!</a>
+                                <a th:if="${condition}" th:href="@{/cancelJoin/{id}(id=${event.getId()})}"
+                                   style="color: darkred; font-size: 16px">Cancel</a>
+                            </th:block>
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
         </div>
     </div>
 </div>
@@ -319,28 +360,29 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnvsKwYr5v2G9q_nx5-OcVD6XvddsG1k8&callback=initMap">
 </script>
-	 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="//maps.googleapis.com/maps/api/js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script src="//maps.googleapis.com/maps/api/js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <script>
 
-	$(document).ready(function() {
-  var map = null;
-  var myMarker;
-  var myLatlng;
+    $(document).ready(function () {
+        var map = null;
+        var myMarker;
+        var myLatlng;
 
-  function initializeGMap(lat, lng) {
-    myLatlng = new google.maps.LatLng(lat, lng);
+        function initializeGMap(lat, lng) {
+            myLatlng = new google.maps.LatLng(lat, lng);
 
-    var myOptions = {
-      zoom: 12,
-      zoomControl: true,
-      center: myLatlng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+            var myOptions = {
+                zoom: 12,
+                zoomControl: true,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
 
-    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+            map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
     myMarker = new google.maps.Marker({
       position: myLatlng,
