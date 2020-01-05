@@ -69,7 +69,7 @@
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
                     <img alt="author" src="../static/img/author-page.jpeg"
-                         th:src="@{/picture/{path}(path=${#authentication.getPrincipal().getId()})}"
+                         th:src="@{/picture/{path}(path=${@userDetailsService.getCurrentUser().getId()})}"
                          class="profile-image">
                     <div class="more-dropdown more-with-triangle">
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -94,7 +94,7 @@
                     </div>
                 </div>
                 <a href="#" class="author-name fn">
-                    <div class="author-title" th:text="${#authentication.getPrincipal().getName()}">
+                    <div class="author-title" th:text="${@userDetailsService.getCurrentUser().getName()}">
                         Prototype User
                     </div>
                     <span class="author-subtitle"></span> <!-- SAMPLE TEXT -->
@@ -115,93 +115,36 @@
         </div>
         <div class="timeline-centered  col-lg-6 col-md-12 col-xs-12">
 
-            <article class="timeline-entry">
-
+            <article class="timeline-entry" th:each="event, iStat : ${@eventService.getIncomingEvents()}">
                 <div class="timeline-entry-inner">
-                    <time class="timeline-time" datetime="2020-01-06T21:00"><span>07:00 PM</span> <span>Today</span>
+                    <time class="timeline-time" th:datetime="${event.getDate()}"><span
+                            th:text="${event.getDate().getHours()+':'+event.getDate().getMinutes()}">07:00 PM</span>
+                        <span th:text="${event.getDate().getYear()+'-'+event.getDate().getMonth()+'-'+event.getDate().getDay()}"></span>
                     </time>
-
-                    <div class="timeline-icon bg-success">
-                        <i class="entypo-feather"></i>
-                    </div>
-
-                    <div class="timeline-label">
-                        <h2><a href="#">Sercan Akdeniz</a> <span>created a study event in </span>Eskişehir Technical
-                            University</h2>
-                        <p>"I have been struggling to study by myself lately. Anyone up to join me?"&emsp;<a href="#" style="color: darkred; font-size: 16px">Join!</a></p>
-                    </div>
-                </div>
-
-            </article>
-
-            <article class="timeline-entry">
-
-                <div class="timeline-entry-inner">
-                    <time class="timeline-time" datetime="2020-01-08T22:00"><span>10:00 PM</span>
-                        <span>08 Jan 2020</span>
-                    </time>
-
-                    <div class="timeline-icon bg-secondary2">
-                        <i class="entypo-feather"></i>
-                    </div>
-
-                    <div class="timeline-label">
-                        <h2><a href="#">Emre Tanrıverdi</a> <span>created a drinking event in </span>Social Pub</h2>
-                        <p>"Hi guys! Wanna have some beer? ;)"&emsp;<a href="#" style="color: darkred; font-size: 16px">Join!</a></p>
-                    </div>
-                </div>
-
-            </article>
-
-            <article class="timeline-entry">
-
-                <div class="timeline-entry-inner">
-                    <time class="timeline-time" datetime="2020-01-13T21:00"><span>09:00 PM</span>
-                        <span>13 Jan 2020</span>
-                    </time>
-
-                    <div class="timeline-icon bg-info">
-                        <i class="entypo-feather"></i>
-                    </div>
-
-                    <div class="timeline-label">
-                        <h2><a href="#">Salih Başaran</a> <span>created a coffee event in </span>Mackbear</h2>
-                        <p>"I have been craving for coffee for days! Wanna grab a latte?"&emsp;<a href="#" style="color: darkred; font-size: 16px">Join!</a></p>
-                    </div>
-                </div>
-
-            </article>
-
-            <article class="timeline-entry">
-
-                <div class="timeline-entry-inner">
-                    <time class="timeline-time" datetime="2020-01-1520:00"><span>08:00 PM</span>
-                        <span>15 Jan 2020</span>
-                    </time>
-
-                    <div class="timeline-icon bg-warning">
-                        <i class="entypo-feather"></i>
-                    </div>
-
-                    <div class="timeline-label">
-                        <h2><a href="#">Aytaç Kayadelen</a> <span>created a dinner event in </span>McDonald's</h2>
-                        <p>"Who can say no to a delicious Big Mac?"&emsp;<a href="#" style="color: darkred; font-size: 16px">Join!</a></p>
-                    </div>
-                </div>
-
-            </article>
-
-            <article class="timeline-entry begin">
-
-                <div class="timeline-entry-inner">
 
                     <div class="timeline-icon"
-                         style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg); background-color: darkgray">
-                        <i class="entypo-flight"></i>
+                         th:classappend="${iStat.index%3==0}? 'bg-success' : (${iStat.index%3==1}? 'bg-secondary2' : 'bg-info')">
+                        <i class="entypo-feather"></i>
                     </div>
 
+                    <div class="timeline-label">
+                        <h2>
+                            <div class="author-thumb">
+                                <img src="../static/img/author-page.jpeg" alt="author" class="profile-image"
+                                     th:src="@{/picture/{id}(id=${event.getCreator().getId()})}">
+                            </div>
+                            <a href="#" th:text="${event.getCreator().getName()}">Sercan Akdeniz</a> <span
+                                th:text="${event.getName()}">Event name here</span></h2>
+                        <th:block
+                                th:with="condition=${@userDetailsService.getCurrentUser().getAttendedEvents().contains(event)}">
+                            <a th:unless="${condition}" th:href="@{/joinEvent/{id}(id=${event.getId()})}"
+                               style="color: darkred; font-size: 16px">Join!</a>
+                            <a th:if="${condition}" th:href="@{/cancelJoin/{id}(id=${event.getId()})}"
+                               style="color: darkred; font-size: 16px">Cancel</a>
+                        </th:block>
+                        </p>
+                    </div>
                 </div>
-
             </article>
 
         </div>

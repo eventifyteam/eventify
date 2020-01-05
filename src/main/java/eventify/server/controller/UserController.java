@@ -73,13 +73,13 @@ public class UserController{
     @GetMapping("joinEvent/{eventId}")
     public String joinEvent(@PathVariable Integer eventId) {
         userService.joinEvent(eventId);
-        return "home";
+        return "redirect:/home";
     }
 
     @GetMapping("cancelJoin/{eventId}")
     public String cancelJoin(@PathVariable Integer eventId) {
         userService.cancelJoin(eventId);
-        return "home";
+        return "redirect:/home";
     }
 
 }

@@ -45,7 +45,7 @@
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
                     <img alt="author" src="../static/img/author-page.jpeg"
-                         th:src="@{/picture/{path}(path=${#authentication.getPrincipal().getId()})}"
+                         th:src="@{/picture/{path}(path=${@userDetailsService.getCurrentUser().getId()})}"
                          class="profile-image">
                     <div class="more-dropdown more-with-triangle">
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <a href="#" class="author-name fn">
-                    <div class="author-title" th:text="${#authentication.getPrincipal().getName()}">
+                    <div class="author-title" th:text="${@userDetailsService.getCurrentUser().getName()}">
                         Prototype User
                     </div>
                     <span class="author-subtitle"></span> <!-- SAMPLE TEXT -->
@@ -98,7 +98,8 @@
 
 
                 <!-- Event List (Notification) -->
-                <ul class="notification-list" th:each="event :${#authentication.getPrincipal().getAttendedEvents()}">
+                <ul class="notification-list"
+                    th:each="event :${@userDetailsService.getCurrentUser().getAttendedEvents()}">
                     <!--/*@thymesVar id="event" type="eventify.server.jpa.model.Event"*/-->
                     <li>
                         <div class="author-thumb">
