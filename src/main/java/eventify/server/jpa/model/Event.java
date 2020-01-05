@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -15,7 +17,7 @@ public class Event {
     private int id;
     private User creator;
     private String name;
-    private Date date;
+    private LocalDateTime date;
     private double lat;
     private double lng;
     private List<User> attendees;
@@ -69,11 +71,11 @@ public class Event {
         this.name = name;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

@@ -118,8 +118,8 @@
             <article class="timeline-entry" th:each="event, iStat : ${@eventService.getIncomingEvents()}">
                 <div class="timeline-entry-inner">
                     <time class="timeline-time" th:datetime="${event.getDate()}"><span
-                            th:text="${event.getDate().getHours()+':'+event.getDate().getMinutes()}">07:00 PM</span>
-                        <span th:text="${event.getDate().getYear()+'-'+event.getDate().getMonth()+'-'+event.getDate().getDay()}"></span>
+                            th:text="${event.getDate().getHour()+':'+event.getDate().getMinute()}">07:00 PM</span>
+                        <span th:text="${event.getDate().getYear()+'-'+event.getDate().getMonth().name().substring(0,3)+'-'+event.getDate().getDayOfMonth()}"></span>
                     </time>
 
                     <div class="timeline-icon"
@@ -171,7 +171,7 @@
 
     // Initialize and add the map
     function initMap() {
-        var apiUrl = /*[[@{/test/allEvents}]]*/
+        var apiUrl = /*[[@{/events/incoming}]]*/
             fetch(apiUrl).then((res) => res.json()).then((apiData) => {
                 var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 13,
