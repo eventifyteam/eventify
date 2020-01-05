@@ -214,40 +214,26 @@
 
 
 <script>
-
-    function getMarkerPositions(apiData) {
-        var markerPositions = {};
-        Object.keys(apiData).forEach((apiDataKey) => {
-            markerPositions[apiDataKey] = {
-                lat: apiData[apiDataKey]['lat'],
-                lng: apiData[apiDataKey]['lng'],
-                name: apiData[apiDataKey]['name']
-            };
-        });
-
-        return markerPositions;
-    }
-
-    function addMarkersToMap(markerPositions, mapElement) {
-        Object.keys(markerPositions).forEach((markerPositionKey) => {
-            new google.maps.Marker({
-                position: {
-                    lat: markerPositions[markerPositionKey]['lat'],
-                    lng: markerPositions[markerPositionKey]['lng'],
-                },
-                map: mapElement,
-                title: markerPositions[markerPositionKey]['name']
-            })
-        });
+    function addMarkerToMap(eventData, mapElement) {
+        new google.maps.Marker({
+            position: {
+                lat: eventData['lat'],
+                lng: eventData['lng'],
+            },
+            map: mapElement,
+            title: eventData['name']
+        })
     }
 
     // Initialize and add the map
     function initMap() {
         var apiUrl = './test/allEvents';
-        fetch(apiUrl, {mode: 'no-cors'}).then((res) => res.json()).then((apiData) => {
-            var markers = getMarkerPositions(apiData);
+        fetch(apiUrl).then((res) => res.json()).then((apiData) => {
             var map = new google.maps.Map(document.getElementById('map'), {zoom: 13, center: {lat: 39.77, lng: 30.52}});
-            addMarkersToMap(markers, map);
+
+            Object.keys(apiData).forEach((eventIndex) => {
+                addMarkerToMap(apiData[eventIndex], map);
+            });
         })
     }
 </script>
