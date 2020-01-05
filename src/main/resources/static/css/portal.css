@@ -62,8 +62,8 @@ img {
     width: 4px;
     background: #f5f5f6;
     left: 50%;
-    top: 20px;
-    bottom: 20px;
+    top: 40%;
+    bottom: -20%;
     margin-left: -4px;
 }
 
@@ -3139,6 +3139,8 @@ input, .form-control {
     color: #515365;
     line-height: inherit;
     font-size: .875rem;
+    margin-left: 2%;
+    padding-top: 3%;
 }
 
 .label-floating.has-success:after {
@@ -5580,6 +5582,7 @@ figure {
     .choose-from-my-photo .btn {
         width: 45%;
     }
+
 
     .photo-album-item.create-album .btn-control {
         width: 50px;
@@ -8080,3 +8083,104 @@ img.mfp-img {
     height: 42px;
     width: 42px;
 }
+.news-feed-form {
+  overflow: hidden; }
+  .news-feed-form .form-group.with-icon::after {
+    display: none; }
+  .news-feed-form .nav-tabs .nav-link {
+    padding: 20px;
+    border: none;
+    border-bottom: 1px solid #e6ecf5;
+    border-right: 1px solid #e6ecf5; }
+  .news-feed-form .nav-tabs .nav-link.active {
+    background-color: #fff;
+    fill: #ff5e3a;
+    color: #515365;
+    border-bottom: transparent; }
+  .news-feed-form .nav-tabs {
+    background-color: #fafbfd;
+    border-bottom: none; }
+  .news-feed-form .nav-link {
+    fill: #888da8;
+    color: #888da8; }
+    .news-feed-form .nav-link svg {
+      margin-right: 10px;
+      width: 18px; }
+    .news-feed-form .nav-link .olymp-status-icon {
+      width: 20px; }
+  .news-feed-form textarea {
+    min-height: 160px;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none; }
+  .news-feed-form .form-group.label-floating.is-focused .control-label,
+  .news-feed-form .form-group.label-floating.has-bootstrap-select .control-label {
+    top: 16px; }
+  .news-feed-form .options-message {
+    margin-top: 7px; }
+    .news-feed-form .options-message svg {
+      width: 22px;
+      height: 22px; }
+    .news-feed-form .options-message:hover {
+      fill: #9a9fbf; }
+  .news-feed-form form {
+    position: relative; }
+  .news-feed-form .author-thumb {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    z-index: 1; }
+  .news-feed-form .form-group {
+    margin-bottom: 0; }
+  .nav-item {
+    width: 100%; }
+
+.form-group.label-floating label.control-label,
+.form-group.label-placeholder label.control-label {
+  top: 18px;
+  font-size: 14px;
+  line-height: 1.42857;
+  left: 20px; }
+
+.form-group.label-static label.control-label,
+.form-group.label-floating.is-focused label.control-label,
+.form-group.label-floating:not(.is-empty) label.control-label,
+.form-group.has-bootstrap-select label.control-label {
+  top: 10px;
+  font-size: 11px;
+  line-height: 1.07143; }
+
+.form-group.label-static label.control-label,
+.form-group.label-placeholder label.control-label,
+.form-group.label-floating label.control-label {
+  position: absolute;
+  pointer-events: none;
+  transition: 0.3s ease all; }
+
+label.control-label {
+  color: #888da8; }
+
+.label-floating.with-icon label.control-label,
+.label-placeholder.with-icon label.control-label {
+  left: 70px; }
+
+  .news-feed-form .form-group.label-floating.is-focused .control-label,
+  .news-feed-form .form-group.label-floating.has-bootstrap-select .control-label {
+    top: 16px; }
+
+.form-group.label-floating.is-select label.control-label {
+  top: 8px;
+  font-size: 11px;
+  line-height: 1.42857;
+  z-index: 9; }
+.form-group {
+  position: relative;
+  margin-bottom: 1.4rem; }
+
+.form-group textarea {
+  resize: none; }
+
+
+
+
