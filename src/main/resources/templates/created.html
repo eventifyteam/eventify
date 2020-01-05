@@ -93,64 +93,26 @@
                     <h6 class="title">Created Events</h6>
                 </div>
 
-
                 <!-- Event List (Notification) -->
-
-
-                <!--
-                <ul class="notification-list">
+                <ul class="notification-list" th:each="event :${#authentication.getPrincipal().getCreatedEvents()}">
+                    <!--/*@thymesVar id="event" type="eventify.server.jpa.model.Event"*/-->
                     <li>
                         <div class="author-thumb">
                             <img src="../static/img/author-page.jpeg" alt="author" class="profile-image"
-                                 th:src="@{/img/author-page.jpeg}">
+                                 th:src="@{/picture/{id}(id=${event.getCreator().getId()})}">
                         </div>
                         <div class="notification-event">
-                            <a href="#" class="h6 notification-friend">You </a> had a coffee event in Kedd Coffee in
-                            15/12/2019.
+                            <a href="#" class="h6 notification-friend" th:text="${event.getName()}">Prototype created
+                                event</a>
                             <span class="notification-date"><time class="entry-date updated"
-                                                                  datetime="2004-07-24T18:18">Yesterday</time></span>
+                                                                  datetime="2004-07-24T18:18"
+                                                                  th:text="${event.getDate()}">Time is shown here</time></span>
                         </div>
-                        <span class="notification-icon">
-											</span>
-
+                        <span class="notification-icon"></span>
                         <div class="more">
                         </div>
                     </li>
-                    <li>
-                        <div class="author-thumb">
-                            <img src="../static/img/author-page.jpeg" alt="author" class="profile-image"
-                                 th:src="@{/img/author-page.jpeg}">
-                        </div>
-                        <div class="notification-event">
-                            <a href="#" class="h6 notification-friend">You </a> had a concert event in Istanbul in
-                            11/11/2019.
-                            <span class="notification-date"><time class="entry-date updated"
-                                                                  datetime="2004-07-24T18:18">One month ago</time></span>
-                        </div>
-                        <span class="notification-icon">
-											</span>
-
-                        <div class="more">
-                        </div>
-                    </li>
-                    <li>
-                        <div class="author-thumb">
-                            <img src="../static/img/author-page.jpeg" alt="author" class="profile-image"
-                                 th:src="@{/img/author-page.jpeg}">
-                        </div>
-                        <div class="notification-event">
-                            <a href="#" class="h6 notification-friend">You </a> had a study event in Eskişehir Technical
-                            University in 10/12/2019.
-                            <span class="notification-date"><time class="entry-date updated"
-                                                                  datetime="2004-07-24T18:18">Two months ago</time></span>
-                        </div>
-                        <span class="notification-icon">
-											</span>
-
-                        <div class="more">
-                        </div>
-                    </li>
-                    <ul> -->
+                </ul>
             </div>
         </div>
 

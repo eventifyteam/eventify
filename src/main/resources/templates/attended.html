@@ -97,46 +97,27 @@
                 </div>
 
 
-                <!-- Event List -->
-
-
-                <!-- <ul class="notification-list">
-                     <li>
-                         <div class="author-thumb">
-                             <img src="../static/img/test-emre.jpg" alt="author" class="profile-image"
-                                  th:src="@{/img/test-emre.jpg}">
-                         </div>
-                         <div class="notification-event">
-                             <a href="#" class="h6 notification-friend">Emre Tanrıverdi</a> had a drinking event in
-                             Social Pub in 7/12/2019.
-                             <span class="notification-date"><time class="entry-date updated"
-                                                                   datetime="2004-07-24T18:18">A week ago</time></span>
-                         </div>
-                         <span class="notification-icon">
-                                             </span>
-
-                         <div class="more">
-                         </div>
-                     </li>
-                     <li>
-                         <div class="author-thumb">
-                             <img src="../static/img/test-salih.jpg" alt="author" class="profile-image"
-                                  th:src="@{/img/test-salih.jpg}">
-                         </div>
-                         <div class="notification-event">
-                             <a href="#" class="h6 notification-friend">Salih Başaran</a> had a coffee event in Mackbear
-                             in 08/11/2019.
-                             <span class="notification-date"><time class="entry-date updated"
-                                                                   datetime="2004-07-24T18:18">One month ago</time></span>
-                         </div>
-                         <span class="notification-icon">
-                                             </span>
-
-                         <div class="more">
-                         </div>
-                     </li>
-                 </ul> -->
-             </div>
+                <!-- Event List (Notification) -->
+                <ul class="notification-list" th:each="event :${#authentication.getPrincipal().getAttendedEvents()}">
+                    <!--/*@thymesVar id="event" type="eventify.server.jpa.model.Event"*/-->
+                    <li>
+                        <div class="author-thumb">
+                            <img src="../static/img/author-page.jpeg" alt="author" class="profile-image"
+                                 th:src="@{/picture/{id}(id=${event.getCreator().getId()})}">
+                        </div>
+                        <div class="notification-event">
+                            <a href="#" class="h6 notification-friend" th:text="${event.getName()}">Prototype attended
+                                event</a>
+                            <span class="notification-date"><time class="entry-date updated"
+                                                                  datetime="2004-07-24T18:18"
+                                                                  th:text="${event.getDate()}">Time is shown here</time></span>
+                        </div>
+                        <span class="notification-icon"></span>
+                        <div class="more">
+                        </div>
+                    </li>
+                </ul>
+            </div>
          </div>
 
         <div class="col col-xl-3 order-xl-1 col-lg-3 order-lg-1 col-md-12 order-md-2 col-sm-12 col-12 responsive-display-none">
