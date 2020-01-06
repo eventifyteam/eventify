@@ -23,7 +23,6 @@ public class EventService {
     }
 
     public void createEvent(Event event) {
-        event.setDate(LocalDateTime.now());
         eventRepository.save(event);
     }
 }
