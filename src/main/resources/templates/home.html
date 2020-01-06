@@ -137,7 +137,9 @@
           </div>
           <div class="row">
             <div class="col-md-12 modal_body_end">
-				<button type="button" class="btn btn-primary" style="margin-top: 2%" data-dismiss="modal" aria-label="Close"><span style="color: white" aria-hidden="true">Choose</span></button>
+                <button type="button" class="btn btn-primary" style="margin-top: 2%" data-dismiss="modal"
+                        aria-label="Close" onclick="setEventInputs()"><span style="color: white" aria-hidden="true">Choose</span>
+                </button>
             </div>
           </div>
         </div>
@@ -162,39 +164,21 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
-                        <form>
+                        <form th:action="@{/events/create}" method="post">
                             <div class="author-thumb">
                                 <img alt="author" src="../static/img/author-page.jpeg"
-                                     th:src="@{/picture/{path}(path=${#authentication.getPrincipal().getId()})}"
+                                     th:src="@{/picture/{path}(path=${@userDetailsService.getCurrentUser().getId()})}"
                                      class="profile-image">
                             </div>
                             <div class="form-group with-icon label-floating is-empty">
-                                <textarea class="form-control" placeholder="Create your event"></textarea>
+                                <textarea class="form-control" placeholder="Create your event" name="name"></textarea>
+                                <input type="hidden" name="lat" id="inpt_lat">
+                                <input type="hidden" name="lng" id="inpt_lng">
                             </div>
                             <div class="add-options-message">
-                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"
-                                   data-original-title="ADD PHOTOS">
-                                    <svg class="olymp-camera-icon" data-toggle="modal"
-                                         data-target="#update-header-photo">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-camera-icon"></use>
-                                    </svg>
-                                </a>
-                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"
-                                   data-original-title="TAG YOUR FRIENDS">
-                                    <svg class="olymp-computer-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-computer-icon"></use>
-                                    </svg>
-                                </a>
-
-                                <a href="#" class="options-message" data-toggle="tooltip" data-placement="top"
-                                   data-original-title="ADD LOCATION">
-                                    <svg class="olymp-small-pin-icon">
-                                        <use xlink:href="svg-icons/sprites/icons.svg#olymp-small-pin-icon"></use>
-                                    </svg>
-                                </a>
-
                                 <button class="btn btn-primary btn-md-2"
-                                        style="background-color: #08192d; border-color: #08192d">Create Event
+                                        style="background-color: #08192d; border-color: #08192d" type="submit">Create
+                                    Event
                                 </button>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
                                         data-lat=' 39.76' data-lng='30.52'>Location
@@ -289,7 +273,7 @@
                     <div class="timeline-entry-inner">
                         <time class="timeline-time" th:datetime="${event.getDate()}"><span
                                 th:text="${event.getDate().getHour()+':'+event.getDate().getMinute()}">07:00 PM</span>
-                            <span th:text="${event.getDate().getYear()+'-'+event.getDate().getMonth().name().substring(0,3)+'-'+event.getDate().getDayOfMonth()}"></span>
+                            <span th:text="${event.getDate().getYear()+' '+event.getDate().getMonth().name().substring(0,3)+' '+event.getDate().getDayOfMonth()}"></span>
                         </time>
 
                         <div class="timeline-icon"
@@ -366,46 +350,58 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <script>
-
     $(document).ready(function () {
-        var map = null;
-        var myMarker;
-        var myLatlng;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(useCurrentPosition);
+        }
 
-        function initializeGMap(lat, lng) {
-            myLatlng = new google.maps.LatLng(lat, lng);
+
+        var map = null;
+
+        function initializeGMap() {
 
             var myOptions = {
                 zoom: 12,
                 zoomControl: true,
-                center: myLatlng,
+                center: {lat: window.myLatlng.lat(), lng: window.myLatlng.lng()},
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
             map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
-    myMarker = new google.maps.Marker({
-      position: myLatlng,
-	  draggable:true,
-	  title:"Drag me!"
-    });
-    myMarker.setMap(map);
-  }
+            window.myMarker = new google.maps.Marker({
+                position: {lat: window.myLatlng.lat(), lng: myLatlng.lng()},
+                draggable: true,
+                title: "Drag me!"
+            });
+            myMarker.setMap(map);
+        }
+
 
   // Re-init map before show modal
   $('#myModal').on('show.bs.modal', function(event) {
-    var button = $(event.relatedTarget);
-    initializeGMap(button.data('lat'), button.data('lng'));
-    $("#location-map").css("width", "100%");
-    $("#map_canvas").css("width", "100%");
+      initializeGMap();
+      $("#location-map").css("width", "100%");
+      $("#map_canvas").css("width", "100%");
   });
 
-  // Trigger map resize event after modal shown
-  $('#myModal').on('shown.bs.modal', function() {
-    google.maps.event.trigger(map, "resize");
-    map.setCenter(myLatlng);
-  });
-});
+        // Trigger map resize event after modal shown
+        $('#myModal').on('shown.bs.modal', function () {
+            google.maps.event.trigger(map, "resize");
+            map.setCenter(myLatlng);
+        });
+    });
+
+    function useCurrentPosition(position) {
+        window.myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        $("#inpt_lat").val(position.coords.latitude);
+        $("#inpt_lng").val(position.coords.longitude);
+    }
+
+    function setEventInputs() {
+        $("#inpt_lat").val(myMarker.position.lat());
+        $("#inpt_lng").val(myMarker.position.lng());
+    }
 </script>
 
 </body>

@@ -4,6 +4,8 @@ import eventify.server.jpa.model.Event;
 import eventify.server.jpa.repository.EventRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class EventService {
     private final EventRepository eventRepository;
@@ -18,5 +20,10 @@ public class EventService {
 
     public Iterable<Event> getIncomingEvents() {
         return eventRepository.incomingEvents();
+    }
+
+    public void createEvent(Event event) {
+        event.setDate(LocalDateTime.now());
+        eventRepository.save(event);
     }
 }
